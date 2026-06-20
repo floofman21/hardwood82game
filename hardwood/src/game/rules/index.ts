@@ -17,7 +17,11 @@ export const ADJ_CLAMP = 1.6;               // caps any single era-adjusted stat
 // positions blocks are the natural bottleneck (only one true center allowed).
 // A lineup that maxes every category against these reaches S~1 and can chase 82-0.
 export const CEIL: Record<Stat, number> = { PTS: 4.8, REB: 3.9, AST: 3.1, STL: 3.7, BLK: 2.6 };
-export const WEIGHT: Record<Stat, number> = { PTS: 1, REB: 1, AST: 1, STL: 1, BLK: 1 };
+// How much each category counts toward the final score (applied in the strength
+// blend, not normalization). STL/BLK are dialed below 1 so the defensive
+// categories — the strict-mode bottleneck — no longer dominate the score; a
+// roster weak only there is punished less, while a fully balanced one is unchanged.
+export const WEIGHT: Record<Stat, number> = { PTS: 1, REB: 1, AST: 1, STL: 0.7, BLK: 0.7 };
 export const ALPHA = 0.6;                    // imbalance penalty strength (geomean blend)
 
 // --- Win curve (engine Step 5) ---
