@@ -106,8 +106,13 @@ export const useDraftStore = create<DraftState>((set, get) => ({
     const open = get().openSlots();
     const taken = new Set(get().taken);
     const pairs = validSpinPairs(PLAYERS, open, taken, POSITION_RULE);
-    const others = pairs.filter((p) => p.team !== currentSpin.team);
-    const pool = others.length ? others : pairs;
+    // Reroll the TEAM only: keep the same decade, swap to a different team.
+    // Fall back gracefully if that decade has no other valid team.
+    const sameDecade = pairs.filter(
+      (p) => p.decade === currentSpin.decade && p.team !== currentSpin.team,
+    );
+    const otherTeam = pairs.filter((p) => p.team !== currentSpin.team);
+    const pool = sameDecade.length ? sameDecade : otherTeam.length ? otherTeam : pairs;
     const pair = spinPairs(pool, rng);
     const choices = eligiblePlayers(PLAYERS, pair.team, pair.decade, open, taken, POSITION_RULE);
     set({
@@ -125,8 +130,13 @@ export const useDraftStore = create<DraftState>((set, get) => ({
     const open = get().openSlots();
     const taken = new Set(get().taken);
     const pairs = validSpinPairs(PLAYERS, open, taken, POSITION_RULE);
-    const others = pairs.filter((p) => p.decade !== currentSpin.decade);
-    const pool = others.length ? others : pairs;
+    // Reroll the DECADE only: keep the same team, swap to a different decade.
+    // Fall back gracefully if that team has no other valid decade.
+    const sameTeam = pairs.filter(
+      (p) => p.team === currentSpin.team && p.decade !== currentSpin.decade,
+    );
+    const otherDecade = pairs.filter((p) => p.decade !== currentSpin.decade);
+    const pool = sameTeam.length ? sameTeam : otherDecade.length ? otherDecade : pairs;
     const pair = spinPairs(pool, rng);
     const choices = eligiblePlayers(PLAYERS, pair.team, pair.decade, open, taken, POSITION_RULE);
     set({

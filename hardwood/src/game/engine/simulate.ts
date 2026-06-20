@@ -24,17 +24,20 @@ export function simulate(
     totals[c] = perPlayer.reduce((s, p) => s + p.adjusted[c], 0);
   }
 
-  // Step 3: normalize per category against the ceiling (weighted)
+  // Step 3: normalize per category against the ceiling
   const N = {} as StatLine;
   for (const c of STATS) {
-    N[c] = clamp01((totals[c] / rules.CEIL[c]) * rules.WEIGHT[c]);
+    N[c] = clamp01(totals[c] / rules.CEIL[c]);
   }
 
-  // Step 4: imbalance-penalized strength (blend mean + geometric mean)
-  const vals = STATS.map((c) => N[c]);
-  const mean = vals.reduce((a, b) => a + b, 0) / vals.length;
-  const product = vals.reduce((a, b) => a * b, 1);
-  const geomean = Math.pow(product, 1 / vals.length);
+  // Step 4: imbalance-penalized strength (blend weighted mean + weighted geomean).
+  // WEIGHT controls how much each category counts toward the score; a category
+  // weighted < 1 has less emphasis (its weakness drags the score down less).
+  const wSum = STATS.reduce((a, c) => a + rules.WEIGHT[c], 0);
+  const mean = STATS.reduce((a, c) => a + rules.WEIGHT[c] * N[c], 0) / wSum;
+  // Weighted geometric mean: prod(N^w)^(1/sum w).
+  const logSum = STATS.reduce((a, c) => a + rules.WEIGHT[c] * Math.log(N[c]), 0);
+  const geomean = Math.exp(logSum / wSum);
   const S = rules.ALPHA * geomean + (1 - rules.ALPHA) * mean;
 
   // Step 5: win curve
