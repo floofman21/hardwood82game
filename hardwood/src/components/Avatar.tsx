@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { decadeColor, colors } from '../theme/tokens';
+import { teamLook } from '../theme/cosmetics';
 import type { Decade } from '../game/data/types';
 
 function initials(name: string): string {
@@ -12,18 +13,23 @@ function initials(name: string): string {
 export function Avatar({
   name,
   decade,
+  team,
   size = 44,
 }: {
   name: string;
   decade: Decade;
+  /** When provided, the avatar gets a ring in the team's primary color. */
+  team?: string;
   size?: number;
 }) {
   const bg = decadeColor[decade];
+  const ring = team ? teamLook(team).primary : undefined;
   return (
     <View
       style={[
         styles.wrap,
         { width: size, height: size, borderRadius: size / 2, backgroundColor: bg },
+        ring && { borderWidth: Math.max(2, size * 0.07), borderColor: ring },
       ]}
     >
       <Text style={[styles.txt, { fontSize: size * 0.38 }]}>{initials(name)}</Text>
