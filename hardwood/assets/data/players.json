@@ -3964,5 +3964,3171 @@
       "STL": 0.9,
       "BLK": 1.4
     }
+  },
+  {
+    "id": "rick-barry-warriors-1960s",
+    "name": "Rick Barry",
+    "team": "Warriors",
+    "decade": "1960s",
+    "positions": [
+      "SF"
+    ],
+    "stats": {
+      "PTS": 35.6,
+      "REB": 9.2,
+      "AST": 3.6,
+      "STL": 1.6,
+      "BLK": 0.5
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "dave-bing-pistons-1960s",
+    "name": "Dave Bing",
+    "team": "Pistons",
+    "decade": "1960s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 27.1,
+      "REB": 4.4,
+      "AST": 6.4,
+      "STL": 1.5,
+      "BLK": 0.3
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "bailey-howell-pistons-1960s",
+    "name": "Bailey Howell",
+    "team": "Pistons",
+    "decade": "1960s",
+    "positions": [
+      "PF",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 23.6,
+      "REB": 11.8,
+      "AST": 1.9,
+      "STL": 1.1,
+      "BLK": 0.6
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "lou-hudson-hawks-1960s",
+    "name": "Lou Hudson",
+    "team": "Hawks",
+    "decade": "1960s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 21.9,
+      "REB": 5,
+      "AST": 2.8,
+      "STL": 1.3,
+      "BLK": 0.3
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "paul-silas-hawks-1960s",
+    "name": "Paul Silas",
+    "team": "Hawks",
+    "decade": "1960s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 11.7,
+      "REB": 12.5,
+      "AST": 2.2,
+      "STL": 1.2,
+      "BLK": 0.7
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "jerry-sloan-bulls-1960s",
+    "name": "Jerry Sloan",
+    "team": "Bulls",
+    "decade": "1960s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 18.3,
+      "REB": 7.4,
+      "AST": 2.8,
+      "STL": 2.2,
+      "BLK": 0.4
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "bob-boozer-bulls-1960s",
+    "name": "Bob Boozer",
+    "team": "Bulls",
+    "decade": "1960s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 21.7,
+      "REB": 10.3,
+      "AST": 2,
+      "STL": 1,
+      "BLK": 0.4
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "gus-johnson-bullets-1960s",
+    "name": "Gus Johnson",
+    "team": "Bullets",
+    "decade": "1960s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 17.1,
+      "REB": 12.7,
+      "AST": 2.4,
+      "STL": 1.5,
+      "BLK": 1.3
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "earl-monroe-bullets-1960s",
+    "name": "Earl Monroe",
+    "team": "Bullets",
+    "decade": "1960s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 25.8,
+      "REB": 3.7,
+      "AST": 4.3,
+      "STL": 1.4,
+      "BLK": 0.2
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "kc-jones-celtics-1960s",
+    "name": "KC Jones",
+    "team": "Celtics",
+    "decade": "1960s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 9.2,
+      "REB": 3.5,
+      "AST": 5.2,
+      "STL": 1.6,
+      "BLK": 0.2
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "satch-sanders-celtics-1960s",
+    "name": "Satch Sanders",
+    "team": "Celtics",
+    "decade": "1960s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 12.6,
+      "REB": 8,
+      "AST": 1.5,
+      "STL": 1,
+      "BLK": 0.7
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "bob-lanier-pistons-1970s",
+    "name": "Bob Lanier",
+    "team": "Pistons",
+    "decade": "1970s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 25.7,
+      "REB": 14.2,
+      "AST": 3.5,
+      "STL": 1.1,
+      "BLK": 1.7
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "dave-bing-pistons-1970s",
+    "name": "Dave Bing",
+    "team": "Pistons",
+    "decade": "1970s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 22.6,
+      "REB": 3.9,
+      "AST": 7.7,
+      "STL": 1.4,
+      "BLK": 0.2
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "pete-maravich-jazz-1970s",
+    "name": "Pete Maravich",
+    "team": "Jazz",
+    "decade": "1970s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 31.1,
+      "REB": 5.1,
+      "AST": 6.2,
+      "STL": 1.4,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "nate-archibald-kings-1970s",
+    "name": "Nate Archibald",
+    "team": "Kings",
+    "decade": "1970s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 34,
+      "REB": 2.3,
+      "AST": 11.4,
+      "STL": 1.5,
+      "BLK": 0.1
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "spencer-haywood-sonics-1970s",
+    "name": "Spencer Haywood",
+    "team": "Sonics",
+    "decade": "1970s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 29.2,
+      "REB": 12.9,
+      "AST": 2.4,
+      "STL": 1,
+      "BLK": 1.5
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "connie-hawkins-suns-1970s",
+    "name": "Connie Hawkins",
+    "team": "Suns",
+    "decade": "1970s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 24.6,
+      "REB": 10.4,
+      "AST": 4.8,
+      "STL": 1.5,
+      "BLK": 1.1
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "austin-carr-cavaliers-1970s",
+    "name": "Austin Carr",
+    "team": "Cavaliers",
+    "decade": "1970s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 21.9,
+      "REB": 3.3,
+      "AST": 3,
+      "STL": 1.2,
+      "BLK": 0.2
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "sidney-wicks-trail-blazers-1970s",
+    "name": "Sidney Wicks",
+    "team": "Trail Blazers",
+    "decade": "1970s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 24.5,
+      "REB": 11.5,
+      "AST": 4.3,
+      "STL": 1.1,
+      "BLK": 0.8
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "geoff-petrie-trail-blazers-1970s",
+    "name": "Geoff Petrie",
+    "team": "Trail Blazers",
+    "decade": "1970s",
+    "positions": [
+      "SG",
+      "PG"
+    ],
+    "stats": {
+      "PTS": 24.8,
+      "REB": 3,
+      "AST": 4.5,
+      "STL": 1,
+      "BLK": 0.2
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "calvin-murphy-rockets-1970s",
+    "name": "Calvin Murphy",
+    "team": "Rockets",
+    "decade": "1970s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 25.6,
+      "REB": 2.2,
+      "AST": 4.2,
+      "STL": 1.5,
+      "BLK": 0.1
+    }
+  },
+  {
+    "id": "rudy-tomjanovich-rockets-1970s",
+    "name": "Rudy Tomjanovich",
+    "team": "Rockets",
+    "decade": "1970s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 24.5,
+      "REB": 10.8,
+      "AST": 2,
+      "STL": 1,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "phil-smith-warriors-1970s",
+    "name": "Phil Smith",
+    "team": "Warriors",
+    "decade": "1970s",
+    "positions": [
+      "SG",
+      "PG"
+    ],
+    "stats": {
+      "PTS": 20,
+      "REB": 4,
+      "AST": 4.5,
+      "STL": 1.9,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "bob-gross-trail-blazers-1970s",
+    "name": "Bob Gross",
+    "team": "Trail Blazers",
+    "decade": "1970s",
+    "positions": [
+      "SF"
+    ],
+    "stats": {
+      "PTS": 11.4,
+      "REB": 5.5,
+      "AST": 3,
+      "STL": 1.5,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "dave-twardzik-trail-blazers-1970s",
+    "name": "Dave Twardzik",
+    "team": "Trail Blazers",
+    "decade": "1970s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 11,
+      "REB": 2.3,
+      "AST": 4,
+      "STL": 1.6,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "norm-van-lier-bulls-1970s",
+    "name": "Norm Van Lier",
+    "team": "Bulls",
+    "decade": "1970s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 13,
+      "REB": 5,
+      "AST": 7.1,
+      "STL": 2,
+      "BLK": 0.2
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "bob-love-bulls-1970s",
+    "name": "Bob Love",
+    "team": "Bulls",
+    "decade": "1970s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 25.8,
+      "REB": 7.2,
+      "AST": 2.4,
+      "STL": 1,
+      "BLK": 0.5
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "chet-walker-bulls-1970s",
+    "name": "Chet Walker",
+    "team": "Bulls",
+    "decade": "1970s",
+    "positions": [
+      "SF"
+    ],
+    "stats": {
+      "PTS": 21.5,
+      "REB": 5.5,
+      "AST": 2.5,
+      "STL": 1,
+      "BLK": 0.3
+    },
+    "estimated": {
+      "STL": true,
+      "BLK": true
+    }
+  },
+  {
+    "id": "artis-gilmore-bulls-1970s",
+    "name": "Artis Gilmore",
+    "team": "Bulls",
+    "decade": "1970s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 24.6,
+      "REB": 15.5,
+      "AST": 2.5,
+      "STL": 0.7,
+      "BLK": 2.5
+    }
+  },
+  {
+    "id": "marques-johnson-bucks-1970s",
+    "name": "Marques Johnson",
+    "team": "Bucks",
+    "decade": "1970s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 25.6,
+      "REB": 7.5,
+      "AST": 3.6,
+      "STL": 1.4,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "brian-winters-bucks-1970s",
+    "name": "Brian Winters",
+    "team": "Bucks",
+    "decade": "1970s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 18.2,
+      "REB": 2.7,
+      "AST": 4.5,
+      "STL": 1.3,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "doug-collins-sixers-1970s",
+    "name": "Doug Collins",
+    "team": "Sixers",
+    "decade": "1970s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 20.1,
+      "REB": 3.3,
+      "AST": 3.5,
+      "STL": 1.4,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "lloyd-free-clippers-1970s",
+    "name": "Lloyd Free",
+    "team": "Clippers",
+    "decade": "1970s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 30.2,
+      "REB": 2.8,
+      "AST": 4.2,
+      "STL": 0.9,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "otis-birdsong-kings-1970s",
+    "name": "Otis Birdsong",
+    "team": "Kings",
+    "decade": "1970s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 21.7,
+      "REB": 3,
+      "AST": 4,
+      "STL": 1.4,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "bobby-dandridge-bullets-1970s",
+    "name": "Bobby Dandridge",
+    "team": "Bullets",
+    "decade": "1970s",
+    "positions": [
+      "SF"
+    ],
+    "stats": {
+      "PTS": 19.3,
+      "REB": 6.2,
+      "AST": 4,
+      "STL": 1.3,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "truck-robinson-suns-1970s",
+    "name": "Truck Robinson",
+    "team": "Suns",
+    "decade": "1970s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 22.7,
+      "REB": 15.7,
+      "AST": 2.4,
+      "STL": 0.9,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "walter-davis-suns-1970s",
+    "name": "Walter Davis",
+    "team": "Suns",
+    "decade": "1970s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 24.2,
+      "REB": 4.5,
+      "AST": 3.4,
+      "STL": 1.6,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "paul-westphal-suns-1970s",
+    "name": "Paul Westphal",
+    "team": "Suns",
+    "decade": "1970s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 25.2,
+      "REB": 2,
+      "AST": 5.5,
+      "STL": 2,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "larry-nance-suns-1980s",
+    "name": "Larry Nance",
+    "team": "Suns",
+    "decade": "1980s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 20.9,
+      "REB": 8.7,
+      "AST": 3.2,
+      "STL": 1,
+      "BLK": 2.6
+    }
+  },
+  {
+    "id": "walter-davis-suns-1980s",
+    "name": "Walter Davis",
+    "team": "Suns",
+    "decade": "1980s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 23.6,
+      "REB": 3.3,
+      "AST": 4,
+      "STL": 1.4,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "alex-english-nuggets-1980s",
+    "name": "Alex English",
+    "team": "Nuggets",
+    "decade": "1980s",
+    "positions": [
+      "SF"
+    ],
+    "stats": {
+      "PTS": 29.8,
+      "REB": 5.5,
+      "AST": 4.8,
+      "STL": 1,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "kiki-vandeweghe-nuggets-1980s",
+    "name": "Kiki Vandeweghe",
+    "team": "Nuggets",
+    "decade": "1980s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 29.4,
+      "REB": 4.5,
+      "AST": 3,
+      "STL": 0.6,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "dan-issel-nuggets-1980s",
+    "name": "Dan Issel",
+    "team": "Nuggets",
+    "decade": "1980s",
+    "positions": [
+      "C",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 22.6,
+      "REB": 7.5,
+      "AST": 2.5,
+      "STL": 1,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "fat-lever-nuggets-1980s",
+    "name": "Fat Lever",
+    "team": "Nuggets",
+    "decade": "1980s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 19.8,
+      "REB": 8.9,
+      "AST": 7.5,
+      "STL": 2.7,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "bernard-king-knicks-1980s",
+    "name": "Bernard King",
+    "team": "Knicks",
+    "decade": "1980s",
+    "positions": [
+      "SF"
+    ],
+    "stats": {
+      "PTS": 32.9,
+      "REB": 5.8,
+      "AST": 3.2,
+      "STL": 1.3,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "gus-williams-sonics-1980s",
+    "name": "Gus Williams",
+    "team": "Sonics",
+    "decade": "1980s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 23.4,
+      "REB": 3,
+      "AST": 6.4,
+      "STL": 2.4,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "jack-sikma-sonics-1980s",
+    "name": "Jack Sikma",
+    "team": "Sonics",
+    "decade": "1980s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 19.6,
+      "REB": 11.4,
+      "AST": 3,
+      "STL": 1.1,
+      "BLK": 1.1
+    }
+  },
+  {
+    "id": "dale-ellis-sonics-1980s",
+    "name": "Dale Ellis",
+    "team": "Sonics",
+    "decade": "1980s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 27.5,
+      "REB": 4.4,
+      "AST": 2.6,
+      "STL": 1.4,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "tom-chambers-suns-1980s",
+    "name": "Tom Chambers",
+    "team": "Suns",
+    "decade": "1980s",
+    "positions": [
+      "PF",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 27.2,
+      "REB": 8.4,
+      "AST": 3,
+      "STL": 1.1,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "kevin-johnson-suns-1980s",
+    "name": "Kevin Johnson",
+    "team": "Suns",
+    "decade": "1980s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 20.4,
+      "REB": 3.4,
+      "AST": 12.2,
+      "STL": 1.7,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "brad-davis-mavericks-1980s",
+    "name": "Brad Davis",
+    "team": "Mavericks",
+    "decade": "1980s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 12,
+      "REB": 2.5,
+      "AST": 7,
+      "STL": 1.3,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "buck-williams-nets-1980s",
+    "name": "Buck Williams",
+    "team": "Nets",
+    "decade": "1980s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 18,
+      "REB": 12.3,
+      "AST": 1.8,
+      "STL": 1,
+      "BLK": 1
+    }
+  },
+  {
+    "id": "otis-birdsong-nets-1980s",
+    "name": "Otis Birdsong",
+    "team": "Nets",
+    "decade": "1980s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 18,
+      "REB": 2.8,
+      "AST": 4,
+      "STL": 1.2,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "micheal-ray-richardson-nets-1980s",
+    "name": "Micheal Ray Richardson",
+    "team": "Nets",
+    "decade": "1980s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 17.4,
+      "REB": 5.6,
+      "AST": 7,
+      "STL": 2.6,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "reggie-theus-kings-1980s",
+    "name": "Reggie Theus",
+    "team": "Kings",
+    "decade": "1980s",
+    "positions": [
+      "SG",
+      "PG"
+    ],
+    "stats": {
+      "PTS": 21.5,
+      "REB": 3.8,
+      "AST": 6.3,
+      "STL": 1.4,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "world-b-free-cavaliers-1980s",
+    "name": "World B. Free",
+    "team": "Cavaliers",
+    "decade": "1980s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 23,
+      "REB": 2.8,
+      "AST": 4.2,
+      "STL": 1,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "marques-johnson-clippers-1980s",
+    "name": "Marques Johnson",
+    "team": "Clippers",
+    "decade": "1980s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 20,
+      "REB": 6,
+      "AST": 3.5,
+      "STL": 1.3,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "norm-nixon-clippers-1980s",
+    "name": "Norm Nixon",
+    "team": "Clippers",
+    "decade": "1980s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 17,
+      "REB": 2.6,
+      "AST": 8,
+      "STL": 1.2,
+      "BLK": 0.1
+    }
+  },
+  {
+    "id": "jeff-malone-bullets-1980s",
+    "name": "Jeff Malone",
+    "team": "Bullets",
+    "decade": "1980s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 22.4,
+      "REB": 3,
+      "AST": 2.4,
+      "STL": 0.9,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "moses-malone-bullets-1980s",
+    "name": "Moses Malone",
+    "team": "Bullets",
+    "decade": "1980s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 24.1,
+      "REB": 11.8,
+      "AST": 1.4,
+      "STL": 1,
+      "BLK": 1.5
+    }
+  },
+  {
+    "id": "vinnie-johnson-pistons-1980s",
+    "name": "Vinnie Johnson",
+    "team": "Pistons",
+    "decade": "1980s",
+    "positions": [
+      "SG",
+      "PG"
+    ],
+    "stats": {
+      "PTS": 16,
+      "REB": 3.2,
+      "AST": 4,
+      "STL": 1,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "dennis-rodman-pistons-1980s",
+    "name": "Dennis Rodman",
+    "team": "Pistons",
+    "decade": "1980s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 11.5,
+      "REB": 9.4,
+      "AST": 1.8,
+      "STL": 0.8,
+      "BLK": 0.9
+    }
+  },
+  {
+    "id": "robert-reid-rockets-1980s",
+    "name": "Robert Reid",
+    "team": "Rockets",
+    "decade": "1980s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 14,
+      "REB": 6,
+      "AST": 4,
+      "STL": 1.5,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "mitch-richmond-kings-1990s",
+    "name": "Mitch Richmond",
+    "team": "Kings",
+    "decade": "1990s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 25.9,
+      "REB": 4,
+      "AST": 4,
+      "STL": 1.5,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "glen-rice-hornets-1990s",
+    "name": "Glen Rice",
+    "team": "Hornets",
+    "decade": "1990s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 26.8,
+      "REB": 4.6,
+      "AST": 2.2,
+      "STL": 1,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "larry-johnson-hornets-1990s",
+    "name": "Larry Johnson",
+    "team": "Hornets",
+    "decade": "1990s",
+    "positions": [
+      "PF",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 22.1,
+      "REB": 10.5,
+      "AST": 4.3,
+      "STL": 1.2,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "alonzo-mourning-hornets-1990s",
+    "name": "Alonzo Mourning",
+    "team": "Hornets",
+    "decade": "1990s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 21.3,
+      "REB": 10.1,
+      "AST": 1,
+      "STL": 0.5,
+      "BLK": 3.5
+    }
+  },
+  {
+    "id": "alonzo-mourning-heat-1990s",
+    "name": "Alonzo Mourning",
+    "team": "Heat",
+    "decade": "1990s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 23.2,
+      "REB": 10.7,
+      "AST": 1.6,
+      "STL": 0.5,
+      "BLK": 3.9
+    }
+  },
+  {
+    "id": "tim-hardaway-heat-1990s",
+    "name": "Tim Hardaway",
+    "team": "Heat",
+    "decade": "1990s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 20.3,
+      "REB": 3.4,
+      "AST": 8.2,
+      "STL": 1.7,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "tim-hardaway-warriors-1990s",
+    "name": "Tim Hardaway",
+    "team": "Warriors",
+    "decade": "1990s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 23.4,
+      "REB": 4,
+      "AST": 10.6,
+      "STL": 2.1,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "chris-mullin-warriors-1990s",
+    "name": "Chris Mullin",
+    "team": "Warriors",
+    "decade": "1990s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 25.7,
+      "REB": 5.6,
+      "AST": 4,
+      "STL": 2.1,
+      "BLK": 0.8
+    }
+  },
+  {
+    "id": "latrell-sprewell-warriors-1990s",
+    "name": "Latrell Sprewell",
+    "team": "Warriors",
+    "decade": "1990s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 24.2,
+      "REB": 4.6,
+      "AST": 4.7,
+      "STL": 2,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "mookie-blaylock-hawks-1990s",
+    "name": "Mookie Blaylock",
+    "team": "Hawks",
+    "decade": "1990s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 17.4,
+      "REB": 4,
+      "AST": 7,
+      "STL": 2.6,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "dikembe-mutombo-nuggets-1990s",
+    "name": "Dikembe Mutombo",
+    "team": "Nuggets",
+    "decade": "1990s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 13.8,
+      "REB": 11.8,
+      "AST": 1.5,
+      "STL": 0.5,
+      "BLK": 3.9
+    }
+  },
+  {
+    "id": "mahmoud-abdul-rauf-nuggets-1990s",
+    "name": "Mahmoud Abdul-Rauf",
+    "team": "Nuggets",
+    "decade": "1990s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 19.2,
+      "REB": 1.9,
+      "AST": 3.4,
+      "STL": 1,
+      "BLK": 0.1
+    }
+  },
+  {
+    "id": "chris-webber-kings-1990s",
+    "name": "Chris Webber",
+    "team": "Kings",
+    "decade": "1990s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 20,
+      "REB": 10,
+      "AST": 4,
+      "STL": 1.5,
+      "BLK": 1.6
+    }
+  },
+  {
+    "id": "jason-kidd-suns-1990s",
+    "name": "Jason Kidd",
+    "team": "Suns",
+    "decade": "1990s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 16.9,
+      "REB": 6.8,
+      "AST": 10.8,
+      "STL": 2.2,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "anfernee-hardaway-magic-1990s",
+    "name": "Anfernee Hardaway",
+    "team": "Magic",
+    "decade": "1990s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 21.7,
+      "REB": 4.5,
+      "AST": 7.1,
+      "STL": 2,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "horace-grant-magic-1990s",
+    "name": "Horace Grant",
+    "team": "Magic",
+    "decade": "1990s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 13.4,
+      "REB": 9,
+      "AST": 2.6,
+      "STL": 1.1,
+      "BLK": 1
+    }
+  },
+  {
+    "id": "vlade-divac-kings-1990s",
+    "name": "Vlade Divac",
+    "team": "Kings",
+    "decade": "1990s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 14.3,
+      "REB": 10,
+      "AST": 4.1,
+      "STL": 1,
+      "BLK": 1.3
+    }
+  },
+  {
+    "id": "cedric-ceballos-lakers-1990s",
+    "name": "Cedric Ceballos",
+    "team": "Lakers",
+    "decade": "1990s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 21.7,
+      "REB": 8,
+      "AST": 1.9,
+      "STL": 1,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "nick-van-exel-lakers-1990s",
+    "name": "Nick Van Exel",
+    "team": "Lakers",
+    "decade": "1990s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 16.9,
+      "REB": 3,
+      "AST": 7.5,
+      "STL": 1,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "eddie-jones-lakers-1990s",
+    "name": "Eddie Jones",
+    "team": "Lakers",
+    "decade": "1990s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 17,
+      "REB": 3.8,
+      "AST": 3.4,
+      "STL": 2.1,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "christian-laettner-timberwolves-1990s",
+    "name": "Christian Laettner",
+    "team": "Timberwolves",
+    "decade": "1990s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 18.2,
+      "REB": 8.8,
+      "AST": 3,
+      "STL": 1,
+      "BLK": 1
+    }
+  },
+  {
+    "id": "tom-gugliotta-timberwolves-1990s",
+    "name": "Tom Gugliotta",
+    "team": "Timberwolves",
+    "decade": "1990s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 20.6,
+      "REB": 8.7,
+      "AST": 4.1,
+      "STL": 1.6,
+      "BLK": 0.9
+    }
+  },
+  {
+    "id": "juwan-howard-bullets-1990s",
+    "name": "Juwan Howard",
+    "team": "Bullets",
+    "decade": "1990s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 22.1,
+      "REB": 8.1,
+      "AST": 4.4,
+      "STL": 0.9,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "chris-webber-bullets-1990s",
+    "name": "Chris Webber",
+    "team": "Bullets",
+    "decade": "1990s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 20.1,
+      "REB": 9.6,
+      "AST": 5,
+      "STL": 1.5,
+      "BLK": 1.9
+    }
+  },
+  {
+    "id": "grant-hill-pistons-1990s",
+    "name": "Grant Hill",
+    "team": "Pistons",
+    "decade": "1990s",
+    "positions": [
+      "SF",
+      "PG"
+    ],
+    "stats": {
+      "PTS": 21.1,
+      "REB": 7.9,
+      "AST": 6.3,
+      "STL": 1.6,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "joe-dumars-pistons-1990s",
+    "name": "Joe Dumars",
+    "team": "Pistons",
+    "decade": "1990s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 23.5,
+      "REB": 2.5,
+      "AST": 4.5,
+      "STL": 0.9,
+      "BLK": 0.1
+    }
+  },
+  {
+    "id": "paul-pierce-celtics-2000s",
+    "name": "Paul Pierce",
+    "team": "Celtics",
+    "decade": "2000s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 26.1,
+      "REB": 6.9,
+      "AST": 4.7,
+      "STL": 1.8,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "ray-allen-celtics-2000s",
+    "name": "Ray Allen",
+    "team": "Celtics",
+    "decade": "2000s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 20,
+      "REB": 3.7,
+      "AST": 3.4,
+      "STL": 1,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "ray-allen-sonics-2000s",
+    "name": "Ray Allen",
+    "team": "Sonics",
+    "decade": "2000s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 26.4,
+      "REB": 4.4,
+      "AST": 4.8,
+      "STL": 1.2,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "rashard-lewis-sonics-2000s",
+    "name": "Rashard Lewis",
+    "team": "Sonics",
+    "decade": "2000s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 22.4,
+      "REB": 6.6,
+      "AST": 2.4,
+      "STL": 1.3,
+      "BLK": 0.8
+    }
+  },
+  {
+    "id": "vince-carter-raptors-2000s",
+    "name": "Vince Carter",
+    "team": "Raptors",
+    "decade": "2000s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 27.6,
+      "REB": 5.5,
+      "AST": 4.4,
+      "STL": 1.3,
+      "BLK": 1.1
+    }
+  },
+  {
+    "id": "chris-bosh-raptors-2000s",
+    "name": "Chris Bosh",
+    "team": "Raptors",
+    "decade": "2000s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 22.7,
+      "REB": 10,
+      "AST": 2.5,
+      "STL": 0.8,
+      "BLK": 1.2
+    }
+  },
+  {
+    "id": "gilbert-arenas-wizards-2000s",
+    "name": "Gilbert Arenas",
+    "team": "Wizards",
+    "decade": "2000s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 29.3,
+      "REB": 4.6,
+      "AST": 6,
+      "STL": 1.9,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "caron-butler-wizards-2000s",
+    "name": "Caron Butler",
+    "team": "Wizards",
+    "decade": "2000s",
+    "positions": [
+      "SF"
+    ],
+    "stats": {
+      "PTS": 20.3,
+      "REB": 6.7,
+      "AST": 4,
+      "STL": 1.7,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "antawn-jamison-wizards-2000s",
+    "name": "Antawn Jamison",
+    "team": "Wizards",
+    "decade": "2000s",
+    "positions": [
+      "PF",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 21.4,
+      "REB": 8.9,
+      "AST": 2,
+      "STL": 1,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "carmelo-anthony-nuggets-2000s",
+    "name": "Carmelo Anthony",
+    "team": "Nuggets",
+    "decade": "2000s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 28.9,
+      "REB": 6.8,
+      "AST": 3.4,
+      "STL": 1.1,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "allen-iverson-nuggets-2000s",
+    "name": "Allen Iverson",
+    "team": "Nuggets",
+    "decade": "2000s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 26.4,
+      "REB": 3,
+      "AST": 7.2,
+      "STL": 2,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "marcus-camby-nuggets-2000s",
+    "name": "Marcus Camby",
+    "team": "Nuggets",
+    "decade": "2000s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 11,
+      "REB": 11.7,
+      "AST": 1.9,
+      "STL": 1.1,
+      "BLK": 3.3
+    }
+  },
+  {
+    "id": "baron-davis-warriors-2000s",
+    "name": "Baron Davis",
+    "team": "Warriors",
+    "decade": "2000s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 21.8,
+      "REB": 4.4,
+      "AST": 8.1,
+      "STL": 2.3,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "stephen-jackson-warriors-2000s",
+    "name": "Stephen Jackson",
+    "team": "Warriors",
+    "decade": "2000s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 20.2,
+      "REB": 5.1,
+      "AST": 4.5,
+      "STL": 1.7,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "elton-brand-clippers-2000s",
+    "name": "Elton Brand",
+    "team": "Clippers",
+    "decade": "2000s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 24.7,
+      "REB": 10,
+      "AST": 2.6,
+      "STL": 1,
+      "BLK": 2.5
+    }
+  },
+  {
+    "id": "corey-maggette-clippers-2000s",
+    "name": "Corey Maggette",
+    "team": "Clippers",
+    "decade": "2000s",
+    "positions": [
+      "SF"
+    ],
+    "stats": {
+      "PTS": 22.2,
+      "REB": 5.7,
+      "AST": 3.4,
+      "STL": 1.2,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "michael-redd-bucks-2000s",
+    "name": "Michael Redd",
+    "team": "Bucks",
+    "decade": "2000s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 26.7,
+      "REB": 4.2,
+      "AST": 2.2,
+      "STL": 1,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "richard-jefferson-nets-2000s",
+    "name": "Richard Jefferson",
+    "team": "Nets",
+    "decade": "2000s",
+    "positions": [
+      "SF"
+    ],
+    "stats": {
+      "PTS": 22.6,
+      "REB": 5.7,
+      "AST": 4,
+      "STL": 1.2,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "jason-kidd-nets-2000s",
+    "name": "Jason Kidd",
+    "team": "Nets",
+    "decade": "2000s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 18.7,
+      "REB": 7.3,
+      "AST": 9.2,
+      "STL": 2.2,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "vince-carter-nets-2000s",
+    "name": "Vince Carter",
+    "team": "Nets",
+    "decade": "2000s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 25.2,
+      "REB": 6,
+      "AST": 4.7,
+      "STL": 1.2,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "joe-johnson-hawks-2000s",
+    "name": "Joe Johnson",
+    "team": "Hawks",
+    "decade": "2000s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 25,
+      "REB": 4.4,
+      "AST": 5.8,
+      "STL": 1.1,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "josh-smith-hawks-2000s",
+    "name": "Josh Smith",
+    "team": "Hawks",
+    "decade": "2000s",
+    "positions": [
+      "PF",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 17.2,
+      "REB": 8.6,
+      "AST": 3.4,
+      "STL": 1.4,
+      "BLK": 2.6
+    }
+  },
+  {
+    "id": "brandon-roy-trail-blazers-2000s",
+    "name": "Brandon Roy",
+    "team": "Trail Blazers",
+    "decade": "2000s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 22.6,
+      "REB": 4.7,
+      "AST": 5.1,
+      "STL": 1.1,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "lamarcus-aldridge-trail-blazers-2000s",
+    "name": "LaMarcus Aldridge",
+    "team": "Trail Blazers",
+    "decade": "2000s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 18.1,
+      "REB": 7.5,
+      "AST": 1.9,
+      "STL": 0.9,
+      "BLK": 1
+    }
+  },
+  {
+    "id": "deron-williams-jazz-2000s",
+    "name": "Deron Williams",
+    "team": "Jazz",
+    "decade": "2000s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 19.4,
+      "REB": 3.3,
+      "AST": 10.5,
+      "STL": 1.1,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "carlos-boozer-jazz-2000s",
+    "name": "Carlos Boozer",
+    "team": "Jazz",
+    "decade": "2000s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 20.9,
+      "REB": 11.7,
+      "AST": 3,
+      "STL": 1,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "mehmet-okur-jazz-2000s",
+    "name": "Mehmet Okur",
+    "team": "Jazz",
+    "decade": "2000s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 18,
+      "REB": 7.7,
+      "AST": 2,
+      "STL": 0.6,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "zach-randolph-trail-blazers-2000s",
+    "name": "Zach Randolph",
+    "team": "Trail Blazers",
+    "decade": "2000s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 23.6,
+      "REB": 10.1,
+      "AST": 2,
+      "STL": 0.8,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "david-west-hornets-2000s",
+    "name": "David West",
+    "team": "Hornets",
+    "decade": "2000s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 21,
+      "REB": 8.9,
+      "AST": 2.3,
+      "STL": 0.9,
+      "BLK": 0.9
+    }
+  },
+  {
+    "id": "chris-paul-hornets-2000s",
+    "name": "Chris Paul",
+    "team": "Hornets",
+    "decade": "2000s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 22.8,
+      "REB": 5.5,
+      "AST": 11.6,
+      "STL": 2.8,
+      "BLK": 0.1
+    }
+  },
+  {
+    "id": "paul-george-pacers-2010s",
+    "name": "Paul George",
+    "team": "Pacers",
+    "decade": "2010s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 23.1,
+      "REB": 6.8,
+      "AST": 4.1,
+      "STL": 1.9,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "roy-hibbert-pacers-2010s",
+    "name": "Roy Hibbert",
+    "team": "Pacers",
+    "decade": "2010s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 11.7,
+      "REB": 6.6,
+      "AST": 1.4,
+      "STL": 0.5,
+      "BLK": 2.2
+    }
+  },
+  {
+    "id": "damian-lillard-trail-blazers-2010s",
+    "name": "Damian Lillard",
+    "team": "Trail Blazers",
+    "decade": "2010s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 27,
+      "REB": 4.4,
+      "AST": 6.5,
+      "STL": 1,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "cj-mccollum-trail-blazers-2010s",
+    "name": "CJ McCollum",
+    "team": "Trail Blazers",
+    "decade": "2010s",
+    "positions": [
+      "SG",
+      "PG"
+    ],
+    "stats": {
+      "PTS": 21,
+      "REB": 3.7,
+      "AST": 3.6,
+      "STL": 0.9,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "demarcus-cousins-kings-2010s",
+    "name": "DeMarcus Cousins",
+    "team": "Kings",
+    "decade": "2010s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 27,
+      "REB": 11.5,
+      "AST": 4.6,
+      "STL": 1.6,
+      "BLK": 1.4
+    }
+  },
+  {
+    "id": "john-wall-wizards-2010s",
+    "name": "John Wall",
+    "team": "Wizards",
+    "decade": "2010s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 23.1,
+      "REB": 4.2,
+      "AST": 10.7,
+      "STL": 2,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "bradley-beal-wizards-2010s",
+    "name": "Bradley Beal",
+    "team": "Wizards",
+    "decade": "2010s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 25.6,
+      "REB": 5,
+      "AST": 5.5,
+      "STL": 1.5,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "kemba-walker-hornets-2010s",
+    "name": "Kemba Walker",
+    "team": "Hornets",
+    "decade": "2010s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 25.6,
+      "REB": 4.4,
+      "AST": 5.9,
+      "STL": 1.2,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "andre-drummond-pistons-2010s",
+    "name": "Andre Drummond",
+    "team": "Pistons",
+    "decade": "2010s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 17.3,
+      "REB": 16,
+      "AST": 1.6,
+      "STL": 1.7,
+      "BLK": 1.6
+    }
+  },
+  {
+    "id": "chris-paul-clippers-2010s",
+    "name": "Chris Paul",
+    "team": "Clippers",
+    "decade": "2010s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 19.1,
+      "REB": 4.4,
+      "AST": 9.9,
+      "STL": 2.5,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "kevin-love-timberwolves-2010s",
+    "name": "Kevin Love",
+    "team": "Timberwolves",
+    "decade": "2010s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 26.1,
+      "REB": 12.5,
+      "AST": 4.4,
+      "STL": 0.8,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "nikola-vucevic-magic-2010s",
+    "name": "Nikola Vucevic",
+    "team": "Magic",
+    "decade": "2010s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 20.8,
+      "REB": 11.9,
+      "AST": 3.8,
+      "STL": 1.1,
+      "BLK": 1
+    }
+  },
+  {
+    "id": "victor-oladipo-pacers-2010s",
+    "name": "Victor Oladipo",
+    "team": "Pacers",
+    "decade": "2010s",
+    "positions": [
+      "SG",
+      "PG"
+    ],
+    "stats": {
+      "PTS": 23.1,
+      "REB": 5.2,
+      "AST": 4.3,
+      "STL": 2.4,
+      "BLK": 0.8
+    }
+  },
+  {
+    "id": "rudy-gobert-jazz-2010s",
+    "name": "Rudy Gobert",
+    "team": "Jazz",
+    "decade": "2010s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 15.9,
+      "REB": 13.7,
+      "AST": 2,
+      "STL": 0.8,
+      "BLK": 2.3
+    }
+  },
+  {
+    "id": "donovan-mitchell-jazz-2010s",
+    "name": "Donovan Mitchell",
+    "team": "Jazz",
+    "decade": "2010s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 24,
+      "REB": 4.4,
+      "AST": 4.3,
+      "STL": 1.4,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "khris-middleton-bucks-2010s",
+    "name": "Khris Middleton",
+    "team": "Bucks",
+    "decade": "2010s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 20.1,
+      "REB": 6.1,
+      "AST": 4.3,
+      "STL": 1.4,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "devin-booker-suns-2010s",
+    "name": "Devin Booker",
+    "team": "Suns",
+    "decade": "2010s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 26.6,
+      "REB": 4.1,
+      "AST": 6.8,
+      "STL": 0.9,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "joel-embiid-sixers-2010s",
+    "name": "Joel Embiid",
+    "team": "Sixers",
+    "decade": "2010s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 27.5,
+      "REB": 13.6,
+      "AST": 3.7,
+      "STL": 0.9,
+      "BLK": 1.9
+    }
+  },
+  {
+    "id": "ben-simmons-sixers-2010s",
+    "name": "Ben Simmons",
+    "team": "Sixers",
+    "decade": "2010s",
+    "positions": [
+      "PG",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 16.9,
+      "REB": 8.8,
+      "AST": 8,
+      "STL": 2.1,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "pascal-siakam-raptors-2010s",
+    "name": "Pascal Siakam",
+    "team": "Raptors",
+    "decade": "2010s",
+    "positions": [
+      "PF",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 22.9,
+      "REB": 7.3,
+      "AST": 3.5,
+      "STL": 1,
+      "BLK": 0.9
+    }
+  },
+  {
+    "id": "trae-young-hawks-2020s",
+    "name": "Trae Young",
+    "team": "Hawks",
+    "decade": "2020s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 26.2,
+      "REB": 3,
+      "AST": 10.8,
+      "STL": 1.1,
+      "BLK": 0.1
+    }
+  },
+  {
+    "id": "tyrese-haliburton-pacers-2020s",
+    "name": "Tyrese Haliburton",
+    "team": "Pacers",
+    "decade": "2020s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 20.7,
+      "REB": 3.9,
+      "AST": 10.9,
+      "STL": 1.6,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "domantas-sabonis-kings-2020s",
+    "name": "Domantas Sabonis",
+    "team": "Kings",
+    "decade": "2020s",
+    "positions": [
+      "C",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 19.4,
+      "REB": 12.3,
+      "AST": 7.3,
+      "STL": 0.9,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "de-aaron-fox-kings-2020s",
+    "name": "De’Aaron Fox",
+    "team": "Kings",
+    "decade": "2020s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 26.6,
+      "REB": 4.6,
+      "AST": 5.6,
+      "STL": 2,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "zion-williamson-pelicans-2020s",
+    "name": "Zion Williamson",
+    "team": "Pelicans",
+    "decade": "2020s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 26,
+      "REB": 7,
+      "AST": 4.6,
+      "STL": 1.1,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "brandon-ingram-pelicans-2020s",
+    "name": "Brandon Ingram",
+    "team": "Pelicans",
+    "decade": "2020s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 24.7,
+      "REB": 5.8,
+      "AST": 5.8,
+      "STL": 0.8,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "paolo-banchero-magic-2020s",
+    "name": "Paolo Banchero",
+    "team": "Magic",
+    "decade": "2020s",
+    "positions": [
+      "PF",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 22.6,
+      "REB": 6.9,
+      "AST": 5.4,
+      "STL": 0.9,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "franz-wagner-magic-2020s",
+    "name": "Franz Wagner",
+    "team": "Magic",
+    "decade": "2020s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 19.7,
+      "REB": 5.3,
+      "AST": 3.7,
+      "STL": 1.1,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "cade-cunningham-pistons-2020s",
+    "name": "Cade Cunningham",
+    "team": "Pistons",
+    "decade": "2020s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 22.7,
+      "REB": 6.2,
+      "AST": 7.5,
+      "STL": 1,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "scottie-barnes-raptors-2020s",
+    "name": "Scottie Barnes",
+    "team": "Raptors",
+    "decade": "2020s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 19.9,
+      "REB": 8.2,
+      "AST": 6.1,
+      "STL": 1.3,
+      "BLK": 1.5
+    }
+  },
+  {
+    "id": "lauri-markkanen-jazz-2020s",
+    "name": "Lauri Markkanen",
+    "team": "Jazz",
+    "decade": "2020s",
+    "positions": [
+      "PF",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 25.6,
+      "REB": 8.6,
+      "AST": 1.9,
+      "STL": 0.6,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "lamelo-ball-hornets-2020s",
+    "name": "LaMelo Ball",
+    "team": "Hornets",
+    "decade": "2020s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 23.3,
+      "REB": 6.4,
+      "AST": 8,
+      "STL": 1.6,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "victor-wembanyama-spurs-2020s",
+    "name": "Victor Wembanyama",
+    "team": "Spurs",
+    "decade": "2020s",
+    "positions": [
+      "C",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 21.4,
+      "REB": 10.6,
+      "AST": 3.9,
+      "STL": 1.2,
+      "BLK": 3.6
+    }
+  },
+  {
+    "id": "jalen-brunson-knicks-2020s",
+    "name": "Jalen Brunson",
+    "team": "Knicks",
+    "decade": "2020s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 28.7,
+      "REB": 3.6,
+      "AST": 6.7,
+      "STL": 0.9,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "julius-randle-knicks-2020s",
+    "name": "Julius Randle",
+    "team": "Knicks",
+    "decade": "2020s",
+    "positions": [
+      "PF"
+    ],
+    "stats": {
+      "PTS": 25.1,
+      "REB": 10,
+      "AST": 5,
+      "STL": 0.8,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "kawhi-leonard-clippers-2020s",
+    "name": "Kawhi Leonard",
+    "team": "Clippers",
+    "decade": "2020s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 24.8,
+      "REB": 6.5,
+      "AST": 3.9,
+      "STL": 1.6,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "paul-george-clippers-2020s",
+    "name": "Paul George",
+    "team": "Clippers",
+    "decade": "2020s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 23.8,
+      "REB": 6.1,
+      "AST": 5.1,
+      "STL": 1.5,
+      "BLK": 0.4
+    }
+  },
+  {
+    "id": "mikal-bridges-nets-2020s",
+    "name": "Mikal Bridges",
+    "team": "Nets",
+    "decade": "2020s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 26.1,
+      "REB": 4.5,
+      "AST": 3.6,
+      "STL": 1,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "alperen-sengun-rockets-2020s",
+    "name": "Alperen Sengun",
+    "team": "Rockets",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 21.1,
+      "REB": 9.3,
+      "AST": 5,
+      "STL": 1.1,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "marcin-gortat-wizards-2010s",
+    "name": "Marcin Gortat",
+    "team": "Wizards",
+    "decade": "2010s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 12,
+      "REB": 9.5,
+      "AST": 1.4,
+      "STL": 0.6,
+      "BLK": 1
+    }
+  },
+  {
+    "id": "nene-wizards-2010s",
+    "name": "Nene",
+    "team": "Wizards",
+    "decade": "2010s",
+    "positions": [
+      "C",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 13,
+      "REB": 6.5,
+      "AST": 2.6,
+      "STL": 1,
+      "BLK": 0.6
+    }
+  },
+  {
+    "id": "al-jefferson-hornets-2010s",
+    "name": "Al Jefferson",
+    "team": "Hornets",
+    "decade": "2010s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 21.8,
+      "REB": 10.8,
+      "AST": 2.1,
+      "STL": 0.9,
+      "BLK": 1.1
+    }
+  },
+  {
+    "id": "miles-bridges-hornets-2020s",
+    "name": "Miles Bridges",
+    "team": "Hornets",
+    "decade": "2020s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 20.2,
+      "REB": 7,
+      "AST": 3.8,
+      "STL": 1.2,
+      "BLK": 0.8
+    }
+  },
+  {
+    "id": "gordon-hayward-hornets-2020s",
+    "name": "Gordon Hayward",
+    "team": "Hornets",
+    "decade": "2020s",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 19.6,
+      "REB": 4.6,
+      "AST": 4.1,
+      "STL": 1,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "darryl-dawkins-nets-1980s",
+    "name": "Darryl Dawkins",
+    "team": "Nets",
+    "decade": "1980s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 16.8,
+      "REB": 7,
+      "AST": 1.3,
+      "STL": 0.5,
+      "BLK": 1.4
+    }
+  },
+  {
+    "id": "kenyon-martin-nets-2000s",
+    "name": "Kenyon Martin",
+    "team": "Nets",
+    "decade": "2000s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 16.7,
+      "REB": 9.5,
+      "AST": 2.5,
+      "STL": 1.1,
+      "BLK": 1.2
+    }
+  },
+  {
+    "id": "nic-claxton-nets-2020s",
+    "name": "Nic Claxton",
+    "team": "Nets",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 12.6,
+      "REB": 9.2,
+      "AST": 2.1,
+      "STL": 0.9,
+      "BLK": 2.1
+    }
+  },
+  {
+    "id": "cam-thomas-nets-2020s",
+    "name": "Cam Thomas",
+    "team": "Nets",
+    "decade": "2020s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 22.5,
+      "REB": 3.2,
+      "AST": 3.3,
+      "STL": 0.7,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "wendell-carter-jr-magic-2020s",
+    "name": "Wendell Carter Jr.",
+    "team": "Magic",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 15,
+      "REB": 10.5,
+      "AST": 2.3,
+      "STL": 0.7,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "jalen-suggs-magic-2020s",
+    "name": "Jalen Suggs",
+    "team": "Magic",
+    "decade": "2020s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 12.6,
+      "REB": 3.1,
+      "AST": 3,
+      "STL": 1.4,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "ivica-zubac-clippers-2020s",
+    "name": "Ivica Zubac",
+    "team": "Clippers",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 11.7,
+      "REB": 9.9,
+      "AST": 1.3,
+      "STL": 0.4,
+      "BLK": 1.4
+    }
+  },
+  {
+    "id": "clint-capela-hawks-2020s",
+    "name": "Clint Capela",
+    "team": "Hawks",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 12.6,
+      "REB": 11.5,
+      "AST": 1,
+      "STL": 0.6,
+      "BLK": 1.5
+    }
+  },
+  {
+    "id": "john-collins-hawks-2020s",
+    "name": "John Collins",
+    "team": "Hawks",
+    "decade": "2020s",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "stats": {
+      "PTS": 17.6,
+      "REB": 7.8,
+      "AST": 1.5,
+      "STL": 0.6,
+      "BLK": 1
+    }
+  },
+  {
+    "id": "jalen-duren-pistons-2020s",
+    "name": "Jalen Duren",
+    "team": "Pistons",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 13.8,
+      "REB": 11.6,
+      "AST": 2.4,
+      "STL": 0.8,
+      "BLK": 1.1
+    }
+  },
+  {
+    "id": "jaden-ivey-pistons-2020s",
+    "name": "Jaden Ivey",
+    "team": "Pistons",
+    "decade": "2020s",
+    "positions": [
+      "SG",
+      "PG"
+    ],
+    "stats": {
+      "PTS": 15.4,
+      "REB": 3.8,
+      "AST": 4,
+      "STL": 0.8,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "jakob-poeltl-raptors-2020s",
+    "name": "Jakob Poeltl",
+    "team": "Raptors",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 13.5,
+      "REB": 9.6,
+      "AST": 2.4,
+      "STL": 0.7,
+      "BLK": 1.2
+    }
+  },
+  {
+    "id": "rj-barrett-raptors-2020s",
+    "name": "RJ Barrett",
+    "team": "Raptors",
+    "decade": "2020s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 19,
+      "REB": 4.8,
+      "AST": 3.8,
+      "STL": 0.6,
+      "BLK": 0.2
+    }
+  },
+  {
+    "id": "walker-kessler-jazz-2020s",
+    "name": "Walker Kessler",
+    "team": "Jazz",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 9.2,
+      "REB": 8.4,
+      "AST": 0.9,
+      "STL": 0.4,
+      "BLK": 2.4
+    }
+  },
+  {
+    "id": "collin-sexton-jazz-2020s",
+    "name": "Collin Sexton",
+    "team": "Jazz",
+    "decade": "2020s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 18.5,
+      "REB": 2.6,
+      "AST": 4.5,
+      "STL": 0.9,
+      "BLK": 0.1
+    }
+  },
+  {
+    "id": "jalen-green-rockets-2020s",
+    "name": "Jalen Green",
+    "team": "Rockets",
+    "decade": "2020s",
+    "positions": [
+      "SG"
+    ],
+    "stats": {
+      "PTS": 21,
+      "REB": 5.2,
+      "AST": 3.5,
+      "STL": 0.8,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "fred-vanvleet-rockets-2020s",
+    "name": "Fred VanVleet",
+    "team": "Rockets",
+    "decade": "2020s",
+    "positions": [
+      "PG"
+    ],
+    "stats": {
+      "PTS": 17.4,
+      "REB": 3.8,
+      "AST": 8.1,
+      "STL": 1.4,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "devin-vassell-spurs-2020s",
+    "name": "Devin Vassell",
+    "team": "Spurs",
+    "decade": "2020s",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "stats": {
+      "PTS": 19.5,
+      "REB": 3.8,
+      "AST": 4.1,
+      "STL": 1.1,
+      "BLK": 0.3
+    }
+  },
+  {
+    "id": "og-anunoby-knicks-2020s",
+    "name": "OG Anunoby",
+    "team": "Knicks",
+    "decade": "2020s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 14.1,
+      "REB": 4.2,
+      "AST": 2.1,
+      "STL": 1.5,
+      "BLK": 0.7
+    }
+  },
+  {
+    "id": "mitchell-robinson-knicks-2020s",
+    "name": "Mitchell Robinson",
+    "team": "Knicks",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 8.5,
+      "REB": 9.4,
+      "AST": 0.9,
+      "STL": 0.8,
+      "BLK": 1.8
+    }
+  },
+  {
+    "id": "keegan-murray-kings-2020s",
+    "name": "Keegan Murray",
+    "team": "Kings",
+    "decade": "2020s",
+    "positions": [
+      "SF",
+      "PF"
+    ],
+    "stats": {
+      "PTS": 15.2,
+      "REB": 5.5,
+      "AST": 1.7,
+      "STL": 0.9,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "cj-mccollum-pelicans-2020s",
+    "name": "CJ McCollum",
+    "team": "Pelicans",
+    "decade": "2020s",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "stats": {
+      "PTS": 21,
+      "REB": 4.4,
+      "AST": 4.8,
+      "STL": 1,
+      "BLK": 0.5
+    }
+  },
+  {
+    "id": "jonas-valanciunas-pelicans-2020s",
+    "name": "Jonas Valanciunas",
+    "team": "Pelicans",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 14.1,
+      "REB": 10.2,
+      "AST": 2,
+      "STL": 0.4,
+      "BLK": 0.8
+    }
+  },
+  {
+    "id": "myles-turner-pacers-2020s",
+    "name": "Myles Turner",
+    "team": "Pacers",
+    "decade": "2020s",
+    "positions": [
+      "C"
+    ],
+    "stats": {
+      "PTS": 17.5,
+      "REB": 6.9,
+      "AST": 1.3,
+      "STL": 0.6,
+      "BLK": 2.3
+    }
   }
 ]
