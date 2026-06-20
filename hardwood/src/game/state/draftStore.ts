@@ -7,6 +7,7 @@ import { LINEUP_SLOTS } from '../rules/decades';
 import {
   validSpinPairsWithChoices,
   eligiblePlayers,
+  rerollPool,
   type SpinPair,
 } from '../data/selectors';
 import { spin as spinPairs, mulberry32 } from '../spin/slotMachine';
@@ -105,14 +106,13 @@ export const useDraftStore = create<DraftState>((set, get) => ({
     if (skips.team <= 0 || !currentSpin) return;
     const open = get().openSlots();
     const taken = new Set(get().taken);
-    const pairs = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, MIN_CHOICES);
-    // Reroll the TEAM only: keep the same decade, swap to a different team.
-    // Fall back gracefully if that decade has no other valid team.
-    const sameDecade = pairs.filter(
-      (p) => p.decade === currentSpin.decade && p.team !== currentSpin.team,
-    );
-    const otherTeam = pairs.filter((p) => p.team !== currentSpin.team);
-    const pool = sameDecade.length ? sameDecade : otherTeam.length ? otherTeam : pairs;
+    // Reroll the TEAM only: keep the decade, swap to a different team. Prefer
+    // teams that can still offer >= MIN_CHOICES picks, but never abandon the
+    // decade lock just because the rich-choice tier has run thin mid-draft.
+    const rich = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, MIN_CHOICES);
+    const any = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, 1);
+    const pool = rerollPool(rich, any, currentSpin, 'decade');
+    if (!pool.length) return;
     const pair = spinPairs(pool, rng);
     const choices = eligiblePlayers(PLAYERS, pair.team, pair.decade, open, taken, POSITION_RULE);
     set({
@@ -129,14 +129,13 @@ export const useDraftStore = create<DraftState>((set, get) => ({
     if (skips.decade <= 0 || !currentSpin) return;
     const open = get().openSlots();
     const taken = new Set(get().taken);
-    const pairs = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, MIN_CHOICES);
-    // Reroll the DECADE only: keep the same team, swap to a different decade.
-    // Fall back gracefully if that team has no other valid decade.
-    const sameTeam = pairs.filter(
-      (p) => p.team === currentSpin.team && p.decade !== currentSpin.decade,
-    );
-    const otherDecade = pairs.filter((p) => p.decade !== currentSpin.decade);
-    const pool = sameTeam.length ? sameTeam : otherDecade.length ? otherDecade : pairs;
+    // Reroll the DECADE only: keep the team, swap to a different decade. Prefer
+    // decades that can still offer >= MIN_CHOICES picks, but never abandon the
+    // team lock just because the rich-choice tier has run thin mid-draft.
+    const rich = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, MIN_CHOICES);
+    const any = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, 1);
+    const pool = rerollPool(rich, any, currentSpin, 'team');
+    if (!pool.length) return;
     const pair = spinPairs(pool, rng);
     const choices = eligiblePlayers(PLAYERS, pair.team, pair.decade, open, taken, POSITION_RULE);
     set({
