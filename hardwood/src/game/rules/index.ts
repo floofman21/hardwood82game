@@ -31,11 +31,14 @@ export const WEIGHT: Record<Stat, number> = { PTS: 1, REB: 1, AST: 1, STL: 0.5, 
 export const ALPHA = 0.6;                    // imbalance penalty strength (geomean blend)
 
 // --- Win curve (engine Step 5) ---
+// Calibrated against measured play: random drafts land at a ~44-win median, while
+// 82-0 is gated at S_PERFECT so it can't happen by luck (random tops out ~76) but
+// is reachable by skilled drafting (~0.5-1% of strong, balanced lineups clear it).
 export const WIN_FLOOR = 20;
 export const MAX_WINS = 82;
-export const WIN_GAIN = 64;                 // > (MAX-FLOOR) so S~0.985+ can reach 82, then clamp
+export const WIN_GAIN = 78;                 // tuned so S=S_PERFECT maps to a literal 82
 export const CURVE_P = 2.2;
-export const S_PERFECT = 0.985;             // strength needed to unlock a literal 82
+export const S_PERFECT = 0.9;               // strength needed to unlock a literal 82
 
 export const BENCHMARKS = benchmarksJson as Benchmarks;
 
