@@ -3,9 +3,9 @@
 // Run: npm run tune [N]
 
 import { PLAYERS } from '../src/game/data/load';
-import { RULES, POSITION_RULE } from '../src/game/rules/index';
+import { RULES, POSITION_RULE, MIN_CHOICES } from '../src/game/rules/index';
 import { LINEUP_SLOTS } from '../src/game/rules/decades';
-import { validSpinPairs, eligiblePlayers } from '../src/game/data/selectors';
+import { validSpinPairsWithChoices, eligiblePlayers } from '../src/game/data/selectors';
 import { spin, mulberry32 } from '../src/game/spin/slotMachine';
 import { simulate } from '../src/game/engine/index';
 import type { Player, Position } from '../src/game/data/types';
@@ -18,7 +18,7 @@ function randomDraft(): Player[] {
   const taken = new Set<string>();
   let open: Position[] = [...LINEUP_SLOTS];
   for (let round = 0; round < LINEUP_SLOTS.length; round++) {
-    const pairs = validSpinPairs(PLAYERS, open, taken, POSITION_RULE);
+    const pairs = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, MIN_CHOICES);
     const pair = spin(pairs, rng);
     const choices = eligiblePlayers(PLAYERS, pair.team, pair.decade, open, taken, POSITION_RULE);
     const pick = choices[Math.floor(rng() * choices.length)];
