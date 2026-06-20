@@ -10,6 +10,11 @@ export const POSITION_RULE: 'lenient' | 'strict' = 'strict';
 
 export const SKIPS = { team: 1, decade: 1 } as const;
 
+// The slot machine tries to land only on a (team, decade) that can currently
+// offer at least this many player choices. It relaxes automatically (down to 1)
+// late in a draft when filled slots thin the available pool.
+export const MIN_CHOICES = 4;
+
 // --- Scoring (engine Step 1-4) ---
 export const ADJ_CLAMP = 1.6;               // caps any single era-adjusted stat
 // Ceilings = the achievable "frontier" totals of a near-optimal *legal* lineup

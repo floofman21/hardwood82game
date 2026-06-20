@@ -2,10 +2,10 @@ import { create } from 'zustand';
 import type { Player, DraftedPlayer, Position, SimResult } from '../data/types';
 import { PLAYERS } from '../data/load';
 import { RULES, POSITION_RULE } from '../rules/index';
-import { SKIPS } from '../rules/index';
+import { SKIPS, MIN_CHOICES } from '../rules/index';
 import { LINEUP_SLOTS } from '../rules/decades';
 import {
-  validSpinPairs,
+  validSpinPairsWithChoices,
   eligiblePlayers,
   type SpinPair,
 } from '../data/selectors';
@@ -94,7 +94,7 @@ export const useDraftStore = create<DraftState>((set, get) => ({
       return;
     }
     const taken = new Set(get().taken);
-    const pairs = validSpinPairs(PLAYERS, open, taken, POSITION_RULE);
+    const pairs = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, MIN_CHOICES);
     const pair = spinPairs(pairs, rng);
     const choices = eligiblePlayers(PLAYERS, pair.team, pair.decade, open, taken, POSITION_RULE);
     set({ currentSpin: pair, choices, status: 'picking', pendingPlayer: null });
@@ -105,7 +105,7 @@ export const useDraftStore = create<DraftState>((set, get) => ({
     if (skips.team <= 0 || !currentSpin) return;
     const open = get().openSlots();
     const taken = new Set(get().taken);
-    const pairs = validSpinPairs(PLAYERS, open, taken, POSITION_RULE);
+    const pairs = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, MIN_CHOICES);
     // Reroll the TEAM only: keep the same decade, swap to a different team.
     // Fall back gracefully if that decade has no other valid team.
     const sameDecade = pairs.filter(
@@ -129,7 +129,7 @@ export const useDraftStore = create<DraftState>((set, get) => ({
     if (skips.decade <= 0 || !currentSpin) return;
     const open = get().openSlots();
     const taken = new Set(get().taken);
-    const pairs = validSpinPairs(PLAYERS, open, taken, POSITION_RULE);
+    const pairs = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, MIN_CHOICES);
     // Reroll the DECADE only: keep the same team, swap to a different decade.
     // Fall back gracefully if that team has no other valid decade.
     const sameTeam = pairs.filter(
