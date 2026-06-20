@@ -6,16 +6,17 @@ import { STATS } from '../data/types';
 import benchmarksJson from '../../../assets/data/benchmarks.json';
 
 export const DRAFT_MODE: 'FIVE_SLOT' | 'ERA_SPREAD' = 'FIVE_SLOT';
-export const POSITION_RULE: 'lenient' | 'strict' = 'lenient';
+export const POSITION_RULE: 'lenient' | 'strict' = 'strict';
 
 export const SKIPS = { team: 1, decade: 1 } as const;
 
 // --- Scoring (engine Step 1-4) ---
 export const ADJ_CLAMP = 1.6;               // caps any single era-adjusted stat
-// Ceilings = the achievable "frontier" totals of a near-optimal balanced roster
-// (calibrated from the dataset; assists are the natural bottleneck). A lineup that
-// maxes every category against these reaches S~1 and can chase 82-0.
-export const CEIL: Record<Stat, number> = { PTS: 4.6, REB: 4.6, AST: 3.2, STL: 3.7, BLK: 3.5 };
+// Ceilings = the achievable "frontier" totals of a near-optimal *legal* lineup
+// (one player per PG/SG/SF/PF/C, calibrated from the dataset). Under strict
+// positions blocks are the natural bottleneck (only one true center allowed).
+// A lineup that maxes every category against these reaches S~1 and can chase 82-0.
+export const CEIL: Record<Stat, number> = { PTS: 4.8, REB: 3.9, AST: 3.1, STL: 3.7, BLK: 2.6 };
 export const WEIGHT: Record<Stat, number> = { PTS: 1, REB: 1, AST: 1, STL: 1, BLK: 1 };
 export const ALPHA = 0.6;                    // imbalance penalty strength (geomean blend)
 

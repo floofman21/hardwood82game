@@ -1,9 +1,9 @@
-// Plays N random *valid* drafts through the engine and prints the win distribution,
-// so balance constants can be tuned by data instead of vibes.
-// Run: node --experimental-strip-types scripts/tune.ts [N]
+// Plays N random *valid, position-legal* drafts through the engine and prints the
+// win distribution, so balance constants can be tuned by data instead of vibes.
+// Run: npm run tune [N]
 
 import { PLAYERS } from '../src/game/data/load';
-import { RULES } from '../src/game/rules/index';
+import { RULES, POSITION_RULE } from '../src/game/rules/index';
 import { LINEUP_SLOTS } from '../src/game/rules/decades';
 import { validSpinPairs, eligiblePlayers } from '../src/game/data/selectors';
 import { spin, mulberry32 } from '../src/game/spin/slotMachine';
@@ -18,13 +18,17 @@ function randomDraft(): Player[] {
   const taken = new Set<string>();
   let open: Position[] = [...LINEUP_SLOTS];
   for (let round = 0; round < LINEUP_SLOTS.length; round++) {
-    const pairs = validSpinPairs(PLAYERS, open, taken, 'lenient');
+    const pairs = validSpinPairs(PLAYERS, open, taken, POSITION_RULE);
     const pair = spin(pairs, rng);
-    const choices = eligiblePlayers(PLAYERS, pair.team, pair.decade, open, taken, 'lenient');
+    const choices = eligiblePlayers(PLAYERS, pair.team, pair.decade, open, taken, POSITION_RULE);
     const pick = choices[Math.floor(rng() * choices.length)];
     drafted.push(pick);
     taken.add(pick.id);
-    open = open.slice(1); // lenient: assign to the next open slot
+    // assign to a random VALID open slot for this player (strict-aware)
+    const validSlots =
+      POSITION_RULE === 'strict' ? open.filter((s) => pick.positions.includes(s)) : open;
+    const slot = validSlots[Math.floor(rng() * validSlots.length)];
+    open = open.filter((s) => s !== slot);
   }
   return drafted;
 }
@@ -41,7 +45,7 @@ wins.sort((a, b) => a - b);
 const q = (p: number) => wins[Math.floor(p * (wins.length - 1))];
 const mean = wins.reduce((a, b) => a + b, 0) / wins.length;
 
-console.log(`Simulated ${N} random rosters\n`);
+console.log(`Simulated ${N} random ${POSITION_RULE} rosters\n`);
 console.log(`min   : ${wins[0]}`);
 console.log(`p10   : ${q(0.1)}`);
 console.log(`median: ${q(0.5)}`);
@@ -51,16 +55,13 @@ console.log(`p99   : ${q(0.99)}`);
 console.log(`max   : ${wins[wins.length - 1]}`);
 console.log(`82-0  : ${perfects} (${((perfects / N) * 100).toFixed(2)}%)`);
 
-// histogram
 console.log('\nDistribution:');
 const buckets: Record<string, number> = {};
 for (const w of wins) {
   const lo = Math.floor(w / 5) * 5;
-  const key = `${lo}-${lo + 4}`;
-  buckets[key] = (buckets[key] ?? 0) + 1;
+  buckets[`${lo}-${lo + 4}`] = (buckets[`${lo}-${lo + 4}`] ?? 0) + 1;
 }
 for (const key of Object.keys(buckets).sort((a, b) => parseInt(a) - parseInt(b))) {
   const n = buckets[key];
-  const bar = '█'.repeat(Math.round((n / N) * 80));
-  console.log(`${key.padStart(7)} | ${bar} ${n}`);
+  console.log(`${key.padStart(7)} | ${'█'.repeat(Math.round((n / N) * 80))} ${n}`);
 }

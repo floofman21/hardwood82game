@@ -47,13 +47,14 @@ export default function Draft() {
 
   const round = s.filledCount() + 1;
   const open = s.openSlots();
+  const assignSlots = pendingPlayer ? s.assignableSlots(pendingPlayer) : open;
 
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
       <ScreenHeader title={`Round ${Math.min(round, 5)} of 5`} />
 
       <View style={styles.rosterBox}>
-        <RosterStrip roster={roster} highlight={pendingPlayer ? open : undefined} />
+        <RosterStrip roster={roster} highlight={pendingPlayer ? assignSlots : undefined} />
       </View>
 
       <View style={styles.reelBox}>
@@ -82,7 +83,7 @@ export default function Draft() {
             <Text style={styles.assignTitle}>Assign {pendingPlayer.name}</Text>
             <Text style={styles.dim}>Choose an open position</Text>
             <View style={styles.slotRow}>
-              {open.map((slot) => (
+              {assignSlots.map((slot) => (
                 <Pressable
                   key={slot}
                   onPress={() => s.assignSlot(slot)}
