@@ -1,5 +1,5 @@
 {
-  "datasetVersion": 1,
-  "scoringVersion": 1,
-  "note": "Peak-season stat lines are approximate and should be verified before release. 1960s STL/BLK are estimated."
+  "datasetVersion": 2,
+  "scoringVersion": 2,
+  "note": "v2: 231 players (doubled), realistic 1-2 position tags, strict positions. Scoring recalibrated to the legal-lineup frontier (blocks are the strict-mode wall). Peak-season stat lines are approximate; 1960s/early-1970s STL/BLK are estimated."
 }

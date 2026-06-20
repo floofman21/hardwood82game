@@ -153,6 +153,8 @@ export const useDraftStore = create<DraftState>((set, get) => ({
     const { pendingPlayer, roster, taken } = get();
     if (!pendingPlayer) return;
     if (roster[slot] !== null) return;
+    // Enforce the position rule at the store, not just the UI.
+    if (!get().assignableSlots(pendingPlayer).includes(slot)) return;
     const drafted: DraftedPlayer = { ...pendingPlayer, slot };
     const nextRoster = { ...roster, [slot]: drafted };
     const nextTaken = [...taken, pendingPlayer.id];

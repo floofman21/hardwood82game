@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import { simulate, eraAdjust, projectWins } from '../src/game/engine/index';
 import { RULES } from '../src/game/rules/index';
 import { PLAYERS } from '../src/game/data/load';
-import { validSpinPairs, eligiblePlayers } from '../src/game/data/selectors';
+import { validSpinPairs, eligiblePlayers, isEligibleForSlots } from '../src/game/data/selectors';
 import { LINEUP_SLOTS } from '../src/game/rules/decades';
 import type { Player } from '../src/game/data/types';
+import { POSITIONS } from '../src/game/data/types';
 
 const byId = (id: string): Player => {
   const p = PLAYERS.find((x) => x.id === id);
@@ -92,4 +93,40 @@ test('selectors: drafted players are excluded from later eligibility', () => {
   const taken = new Set([PLAYERS[0].id]);
   const elig = eligiblePlayers(PLAYERS, PLAYERS[0].team, PLAYERS[0].decade, LINEUP_SLOTS, taken, 'lenient');
   assert.ok(!elig.some((p) => p.id === PLAYERS[0].id));
+});
+
+// --- strict position enforcement (selector level) ---
+
+test('strict: a player is ineligible for a slot they do not play', () => {
+  const mitchell = byId('donovan-mitchell-cavaliers-2020s'); // SG only
+  assert.equal(isEligibleForSlots(mitchell, ['C'], 'strict'), false);
+  assert.equal(isEligibleForSlots(mitchell, ['SG'], 'strict'), true);
+  assert.equal(isEligibleForSlots(mitchell, ['PF', 'SG'], 'strict'), true);
+});
+
+test('lenient: any player can fill any open slot', () => {
+  const mitchell = byId('donovan-mitchell-cavaliers-2020s'); // SG only
+  assert.equal(isEligibleForSlots(mitchell, ['C'], 'lenient'), true);
+});
+
+test('strict: eligiblePlayers for a single open slot only returns players who play it', () => {
+  // when only C is open, every eligible player across the pool must list C
+  for (const slot of POSITIONS) {
+    const elig = PLAYERS.flatMap((p) =>
+      eligiblePlayers(PLAYERS, p.team, p.decade, [slot], new Set(), 'strict'),
+    );
+    assert.ok(elig.length > 0, `no eligible players for open slot ${slot}`);
+    for (const p of elig) assert.ok(p.positions.includes(slot));
+  }
+});
+
+test('strict: spinner never offers a pair that cannot fill the open slot', () => {
+  for (const slot of POSITIONS) {
+    const pairs = validSpinPairs(PLAYERS, [slot], new Set(), 'strict');
+    assert.ok(pairs.length > 0, `no spin pairs for open slot ${slot}`);
+    for (const pair of pairs) {
+      const elig = eligiblePlayers(PLAYERS, pair.team, pair.decade, [slot], new Set(), 'strict');
+      assert.ok(elig.length >= 1);
+    }
+  }
 });
