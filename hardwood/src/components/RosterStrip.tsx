@@ -27,7 +27,7 @@ export function RosterStrip({
               ]}
             >
               {p ? (
-                <Avatar name={p.name} decade={p.decade} size={40} />
+                <Avatar name={p.name} decade={p.decade} team={p.team} size={40} />
               ) : (
                 <Text style={styles.slotLabel}>{slot}</Text>
               )}

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { colors, space, radius, decadeColor } from '../theme/tokens';
+import { eraTheme, teamLook, withAlpha } from '../theme/cosmetics';
+import { TeamBadge } from './TeamBadge';
 import { PLAYERS } from '../game/data/load';
 import { DECADES } from '../game/data/types';
 import type { SpinPair } from '../game/data/selectors';
@@ -52,11 +54,24 @@ export function SlotMachine({
   }, [cycleToken]);
 
   const accent = display ? decadeColor[display.decade] : colors.border;
+  const team = display ? teamLook(display.team) : null;
+  const era = display ? eraTheme[display.decade] : null;
+  // When settled, the frame glows in the team's color and the team reel gets a
+  // faint wash of it — pure flavor so the result feels branded.
+  const frame = locked && team ? team.primary : locked ? accent : colors.border;
 
   return (
-    <View style={[styles.wrap, { borderColor: locked ? accent : colors.border }]}>
-      <View style={styles.reel}>
+    <View style={[styles.wrap, { borderColor: frame }]}>
+      <View
+        style={[
+          styles.reel,
+          locked && team && { backgroundColor: withAlpha(team.primary, 0.12) },
+        ]}
+      >
         <Text style={styles.kicker}>TEAM</Text>
+        {locked && display ? (
+          <TeamBadge team={display.team} size={34} />
+        ) : null}
         <Text style={[styles.team, !locked && styles.blur]} numberOfLines={1}>
           {display?.team ?? '—'}
         </Text>
@@ -67,6 +82,11 @@ export function SlotMachine({
         <Text style={[styles.decade, { color: accent }, !locked && styles.blur]}>
           {display?.decade ?? '—'}
         </Text>
+        {locked && era ? (
+          <Text style={[styles.eraLabel, { color: accent }]} numberOfLines={1}>
+            {era.label}
+          </Text>
+        ) : null}
       </View>
     </View>
   );
@@ -78,10 +98,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface, borderRadius: radius.lg,
     borderWidth: 2, paddingVertical: space.xl, paddingHorizontal: space.lg,
   },
-  reel: { flex: 1, alignItems: 'center', gap: 6 },
+  reel: {
+    flex: 1, alignItems: 'center', gap: 6,
+    paddingVertical: space.sm, borderRadius: radius.md,
+  },
   divider: { width: 1, alignSelf: 'stretch', backgroundColor: colors.border, marginVertical: space.sm },
   kicker: { color: colors.textFaint, fontSize: 11, fontWeight: '700', letterSpacing: 1.5 },
   team: { color: colors.text, fontSize: 22, fontWeight: '800', textAlign: 'center' },
   decade: { fontSize: 26, fontWeight: '800', letterSpacing: -0.5 },
+  eraLabel: { fontSize: 11, fontWeight: '700', letterSpacing: 0.5, opacity: 0.9 },
   blur: { opacity: 0.55 },
 });

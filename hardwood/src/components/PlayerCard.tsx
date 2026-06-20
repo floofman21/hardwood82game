@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, View, Text, StyleSheet } from 'react-native';
 import { Avatar } from './Avatar';
+import { TeamBadge } from './TeamBadge';
 import { colors, space, radius, decadeColor } from '../theme/tokens';
 import { STATS } from '../game/data/types';
 import type { Player } from '../game/data/types';
@@ -25,10 +26,11 @@ export function PlayerCard({
         pressed && { opacity: 0.85 },
       ]}
     >
-      <Avatar name={player.name} decade={player.decade} size={46} />
+      <Avatar name={player.name} decade={player.decade} team={player.team} size={46} />
       <View style={styles.mid}>
         <Text style={styles.name} numberOfLines={1}>{player.name}</Text>
         <View style={styles.metaRow}>
+          <TeamBadge team={player.team} size={18} />
           <Text style={styles.team} numberOfLines={1}>{player.team}</Text>
           <View style={[styles.decadeChip, { borderColor: decadeColor[player.decade] }]}>
             <Text style={[styles.decadeTxt, { color: decadeColor[player.decade] }]}>
