@@ -55,6 +55,37 @@ export function validSpinPairs(
   return [...seen.values()];
 }
 
+/**
+ * Like validSpinPairs, but only returns pairs that can currently offer at least
+ * `target` distinct picks. If no pair meets `target`, it relaxes the requirement
+ * one step at a time (target-1, target-2, ... 1) and returns the best tier that
+ * still has pairs. This keeps the slot machine from landing on a team/era with
+ * too few choices early, while degrading gracefully once slots fill up late.
+ */
+export function validSpinPairsWithChoices(
+  players: Player[],
+  openSlots: Position[],
+  alreadyDraftedIds: Set<string>,
+  positionRule: 'lenient' | 'strict',
+  target: number,
+): SpinPair[] {
+  const counts = new Map<string, { pair: SpinPair; n: number }>();
+  for (const p of players) {
+    if (alreadyDraftedIds.has(p.id)) continue;
+    if (!isEligibleForSlots(p, openSlots, positionRule)) continue;
+    const key = `${p.team}|${p.decade}`;
+    const entry = counts.get(key);
+    if (entry) entry.n += 1;
+    else counts.set(key, { pair: { team: p.team, decade: p.decade }, n: 1 });
+  }
+  const all = [...counts.values()];
+  for (let min = Math.max(1, target); min >= 1; min--) {
+    const tier = all.filter((e) => e.n >= min);
+    if (tier.length) return tier.map((e) => e.pair);
+  }
+  return [];
+}
+
 export function listTeamsForDecade(players: Player[], decade: Decade): string[] {
   return [...new Set(players.filter((p) => p.decade === decade).map((p) => p.team))];
 }

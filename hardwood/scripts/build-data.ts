@@ -3,8 +3,12 @@
 // Run: npm run build-data   (exits non-zero on failure)
 
 import { PLAYERS } from '../src/game/data/load';
-import { BENCHMARKS, POSITION_RULE } from '../src/game/rules/index';
-import { validSpinPairs, eligiblePlayers } from '../src/game/data/selectors';
+import { BENCHMARKS, POSITION_RULE, MIN_CHOICES } from '../src/game/rules/index';
+import {
+  validSpinPairs,
+  validSpinPairsWithChoices,
+  eligiblePlayers,
+} from '../src/game/data/selectors';
 import { spin, mulberry32 } from '../src/game/spin/slotMachine';
 import { STATS, POSITIONS, DECADES } from '../src/game/data/types';
 import { LINEUP_SLOTS, ESTIMATED_ERAS } from '../src/game/rules/decades';
@@ -46,12 +50,18 @@ for (const s of LINEUP_SLOTS)
   if (posCount[s] < MIN_PER_POSITION)
     errors.push(`Thin position pool ${s}: ${posCount[s]} (< ${MIN_PER_POSITION})`);
 
-// 5. every offered (team, decade) is draftable at the start
+// 5. every offered (team, decade) is draftable at the start, and we report how
+//    many fall short of the MIN_CHOICES target (those simply aren't offered at
+//    the first pick; the spinner guard avoids them until late-draft fallback).
 const startPairs = validSpinPairs(PLAYERS, LINEUP_SLOTS, new Set(), POSITION_RULE);
+const thinPairs: string[] = [];
 for (const pair of startPairs) {
   const n = eligiblePlayers(PLAYERS, pair.team, pair.decade, LINEUP_SLOTS, new Set(), POSITION_RULE).length;
   if (n < 1) errors.push(`Unfillable pair: ${pair.team} ${pair.decade}`);
+  if (n < MIN_CHOICES) thinPairs.push(`${pair.team} ${pair.decade} (${n})`);
 }
+if (thinPairs.length)
+  warn.push(`${thinPairs.length} team/eras below MIN_CHOICES=${MIN_CHOICES}: ${thinPairs.join(', ')}`);
 
 // 6. NO DEAD-ENDS: simulate many strict drafts; every one must fill 5 distinct slots
 const TRIALS = 5000;
@@ -62,7 +72,7 @@ for (let i = 0; i < TRIALS; i++) {
   let open: Position[] = [...LINEUP_SLOTS];
   let ok = true;
   for (let r = 0; r < LINEUP_SLOTS.length; r++) {
-    const pairs = validSpinPairs(PLAYERS, open, taken, POSITION_RULE);
+    const pairs = validSpinPairsWithChoices(PLAYERS, open, taken, POSITION_RULE, MIN_CHOICES);
     if (pairs.length === 0) { ok = false; break; }
     const pair = spin(pairs, rng);
     const choices = eligiblePlayers(PLAYERS, pair.team, pair.decade, open, taken, POSITION_RULE);
@@ -82,6 +92,7 @@ console.log(`Players: ${PLAYERS.length}`);
 console.log(`Position rule: ${POSITION_RULE}`);
 console.log(`Position pool: ${LINEUP_SLOTS.map((s) => `${s}=${posCount[s]}`).join('  ')}`);
 console.log(`Valid (team, decade) spin pairs at start: ${startPairs.length}`);
+console.log(`Team/eras with >= ${MIN_CHOICES} choices at start: ${startPairs.length - thinPairs.length}/${startPairs.length}`);
 console.log(`Dead-ends over ${TRIALS} strict drafts: ${deadEnds}`);
 if (warn.length) console.log('\nWarnings:\n' + warn.map((w) => '  - ' + w).join('\n'));
 if (errors.length) {

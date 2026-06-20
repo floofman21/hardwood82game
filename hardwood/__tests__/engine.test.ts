@@ -3,7 +3,12 @@ import assert from 'node:assert/strict';
 import { simulate, eraAdjust, projectWins } from '../src/game/engine/index';
 import { RULES } from '../src/game/rules/index';
 import { PLAYERS } from '../src/game/data/load';
-import { validSpinPairs, eligiblePlayers, isEligibleForSlots } from '../src/game/data/selectors';
+import {
+  validSpinPairs,
+  validSpinPairsWithChoices,
+  eligiblePlayers,
+  isEligibleForSlots,
+} from '../src/game/data/selectors';
 import { LINEUP_SLOTS } from '../src/game/rules/decades';
 import type { Player } from '../src/game/data/types';
 import { POSITIONS } from '../src/game/data/types';
@@ -128,5 +133,28 @@ test('strict: spinner never offers a pair that cannot fill the open slot', () =>
       const elig = eligiblePlayers(PLAYERS, pair.team, pair.decade, [slot], new Set(), 'strict');
       assert.ok(elig.length >= 1);
     }
+  }
+});
+
+// --- min-choices spinner guard ---
+
+test('guard: at the first pick every offered pair has >= 4 choices', () => {
+  const pairs = validSpinPairsWithChoices(PLAYERS, LINEUP_SLOTS, new Set(), 'strict', 4);
+  assert.ok(pairs.length > 0);
+  for (const pair of pairs) {
+    const n = eligiblePlayers(PLAYERS, pair.team, pair.decade, LINEUP_SLOTS, new Set(), 'strict').length;
+    assert.ok(n >= 4, `${pair.team} ${pair.decade} offered with only ${n} choices`);
+  }
+});
+
+test('guard: relaxes gracefully when no pair can meet the target', () => {
+  // A single open, hard-to-fill slot late in a draft: the guard must still
+  // return at least one pair rather than nothing (falls back below the target).
+  const pairs = validSpinPairsWithChoices(PLAYERS, ['C'], new Set(), 'strict', 4);
+  assert.ok(pairs.length > 0);
+  // and it never returns a pair with zero eligible players
+  for (const pair of pairs) {
+    const n = eligiblePlayers(PLAYERS, pair.team, pair.decade, ['C'], new Set(), 'strict').length;
+    assert.ok(n >= 1);
   }
 });
