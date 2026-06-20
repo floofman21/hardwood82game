@@ -14,7 +14,7 @@ let store: KVStore;
 try {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { MMKV } = require('react-native-mmkv');
-  store = new MMKV({ id: 'hardwood' }) as KVStore;
+  store = new MMKV({ id: 'hooplore' }) as KVStore;
 } catch {
   const mem = new Map<string, string>();
   store = {

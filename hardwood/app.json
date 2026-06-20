@@ -1,15 +1,19 @@
 {
   "expo": {
-    "name": "Hardwood",
-    "slug": "hardwood",
-    "scheme": "hardwood",
+    "name": "HoopLore",
+    "slug": "hooplore",
+    "scheme": "hooplore",
     "version": "0.1.0",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": { "backgroundColor": "#0E0F12", "resizeMode": "contain" },
-    "ios": { "supportsTablet": true, "bundleIdentifier": "com.example.hardwood" },
-    "android": { "package": "com.example.hardwood" },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hooplore.app",
+      "config": { "usesNonExemptEncryption": false }
+    },
+    "android": { "package": "com.hooplore.app" },
     "plugins": ["expo-router"],
     "experiments": { "typedRoutes": true }
   }

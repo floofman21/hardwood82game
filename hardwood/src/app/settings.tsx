@@ -41,7 +41,7 @@ export default function Settings() {
         <View style={styles.about}>
           <Text style={styles.aboutTitle}>About</Text>
           <Text style={styles.aboutTxt}>
-            Hardwood is an independent basketball drafting game. Player names and
+            HoopLore is an independent basketball drafting game. Player names and
             statistics are factual historical data. This app is not affiliated with,
             endorsed by, or sponsored by the NBA or any team, and uses no league logos,
             photographs, or trademarks.
