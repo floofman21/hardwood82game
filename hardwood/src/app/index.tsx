@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
       <View style={styles.top}>
-        <Text style={styles.brand}>HARDWOOD</Text>
+        <Text style={styles.brand}>HoopLore</Text>
         <Text style={styles.tagline}>Draft five all-time greats. Chase 82–0.</Text>
       </View>
 
@@ -85,7 +85,7 @@ function Link({ label, onPress }: { label: string; onPress: () => void }) {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg, paddingHorizontal: space.lg },
   top: { marginTop: space.xxl, marginBottom: space.xl },
-  brand: { ...type.display, color: colors.text, letterSpacing: 2 },
+  brand: { ...type.display, color: colors.text, letterSpacing: 0.5 },
   tagline: { color: colors.textDim, fontSize: 15, marginTop: space.sm },
   bestCard: {
     backgroundColor: colors.surface, borderRadius: radius.lg, borderWidth: 1,

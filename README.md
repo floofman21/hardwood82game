@@ -1,4 +1,4 @@
-# Hardwood
+# HoopLore
 
 An all-time NBA roster drafting game for mobile. Spin a team + decade, draft five
 players to fill PG/SG/SF/PF/C, and a deterministic, era-adjusted engine projects
@@ -70,7 +70,7 @@ and watch the distribution shift. No magic numbers live in the engine itself.
 
 - **Stats are approximate peak-season lines** and 1960s/early-70s steals & blocks
   are estimated (flagged in `meta.json`). Verify against a reference before shipping.
-- **Branding** ("Hardwood", amber `#F4A23B`) is a placeholder — swap in `src/theme/tokens.ts`.
+- **Branding** ("HoopLore", amber `#F4A23B`) — wordmark in `src/app/index.tsx`, palette in `src/theme/tokens.ts`.
 - **Social** (feed/leaderboard/challenges) is stubbed behind `SocialService`; wire a
   backend there when ready.
 - Custom fonts (Fraunces/Inter) aren't loaded yet — system fonts are used for now.
