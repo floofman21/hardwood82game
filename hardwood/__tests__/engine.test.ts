@@ -8,8 +8,11 @@ import {
   validSpinPairsWithChoices,
   eligiblePlayers,
   isEligibleForSlots,
+  rerollPool,
 } from '../src/game/data/selectors';
 import { LINEUP_SLOTS } from '../src/game/rules/decades';
+import { MIN_CHOICES } from '../src/game/rules/index';
+import type { Position } from '../src/game/data/types';
 import type { Player } from '../src/game/data/types';
 import { POSITIONS } from '../src/game/data/types';
 
@@ -158,5 +161,37 @@ test('guard: relaxes gracefully when no pair can meet the target', () => {
   for (const pair of pairs) {
     const n = eligiblePlayers(PLAYERS, pair.team, pair.decade, ['C'], new Set(), 'strict').length;
     assert.ok(n >= 1);
+  }
+});
+
+// --- reroll axis-lock (regression: rerolls must not change both axes) ---
+
+test('reroll keeps the locked axis even mid-draft when the rich tier is thin', () => {
+  // SF/PF open is exactly the state where <4-choice teams dominate, which is how
+  // rerolls used to wrongly jump both team and decade.
+  const open: Position[] = ['SF', 'PF'];
+  const taken = new Set<string>();
+  const rich = validSpinPairsWithChoices(PLAYERS, open, taken, 'strict', MIN_CHOICES);
+  const any = validSpinPairsWithChoices(PLAYERS, open, taken, 'strict', 1);
+
+  for (const current of [
+    { team: 'Lakers', decade: '2000s' as const },
+    { team: 'Bulls', decade: '1990s' as const },
+    { team: 'Heat', decade: '2010s' as const },
+  ]) {
+    // reroll DECADE locks the team
+    const decPool = rerollPool(rich, any, current, 'team');
+    assert.ok(decPool.length > 0, `no reroll-decade options for ${current.team}`);
+    for (const p of decPool) {
+      assert.equal(p.team, current.team, 'reroll-decade must keep the team');
+      assert.notEqual(p.decade, current.decade, 'reroll-decade must change the decade');
+    }
+    // reroll TEAM locks the decade
+    const teamPool = rerollPool(rich, any, current, 'decade');
+    assert.ok(teamPool.length > 0, `no reroll-team options for ${current.team}`);
+    for (const p of teamPool) {
+      assert.equal(p.decade, current.decade, 'reroll-team must keep the decade');
+      assert.notEqual(p.team, current.team, 'reroll-team must change the team');
+    }
   }
 });

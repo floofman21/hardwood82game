@@ -86,6 +86,33 @@ export function validSpinPairsWithChoices(
   return [];
 }
 
+/**
+ * Choose the candidate pairs for a reroll that locks one axis. `lock` names the
+ * axis that must stay fixed ('team' keeps the team and changes the decade; 'decade'
+ * keeps the decade and changes the team). It prefers choice-rich pairs, then any
+ * valid pair, and only abandons the lock if the locked value has no alternative
+ * left at all. Keeping this pure makes the axis-lock behaviour unit-testable.
+ */
+export function rerollPool(
+  rich: SpinPair[],
+  any: SpinPair[],
+  current: SpinPair,
+  lock: 'team' | 'decade',
+): SpinPair[] {
+  const keep = (ps: SpinPair[]) =>
+    lock === 'team'
+      ? ps.filter((p) => p.team === current.team && p.decade !== current.decade)
+      : ps.filter((p) => p.decade === current.decade && p.team !== current.team);
+  const change = (ps: SpinPair[]) =>
+    lock === 'team'
+      ? ps.filter((p) => p.decade !== current.decade)
+      : ps.filter((p) => p.team !== current.team);
+  if (keep(rich).length) return keep(rich);
+  if (keep(any).length) return keep(any);
+  if (change(rich).length) return change(rich);
+  return change(any);
+}
+
 export function listTeamsForDecade(players: Player[], decade: Decade): string[] {
   return [...new Set(players.filter((p) => p.decade === decade).map((p) => p.team))];
 }
