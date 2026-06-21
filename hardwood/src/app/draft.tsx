@@ -152,7 +152,7 @@ export default function Draft() {
               >
                 {choices.map((p, i) => (
                   <Pressable key={p.id} onPress={() => { setCardIndex(i); scrollRef.current?.scrollTo({ x: i * (CARD_W + GAP), animated: true }); }}>
-                    <CandidateCard player={p} width={CARD_W} active={i === cardIndex} hideStats={mode === 'hoopiq'} />
+                    <CandidateCard player={p} width={CARD_W} active={i === cardIndex} hideStats={mode === 'scoutseye'} />
                   </Pressable>
                 ))}
               </ScrollView>

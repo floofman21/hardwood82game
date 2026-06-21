@@ -107,8 +107,8 @@ button → text links row.
 - **Mode toggle (segmented):** container `#12161e`, 1px border `rgba(255,255,255,.07)`,
   radius 14, padding 5, two equal segments. Active segment ("CLASSIC") filled amber
   `#F4A23B`, radius 10; title Barlow 800 15px uppercase `#0B0D12`, sub "Stats shown"
-  10px `rgba(11,13,18,.7)`. Inactive ("HOOPIQ") transparent; title `#8B93A3`, sub
-  `#565E6E`. (HoopIQ = stats hidden mode.)
+  10px `rgba(11,13,18,.7)`. Inactive ("SCOUT'S EYE") transparent; title `#8B93A3`, sub
+  `#565E6E`. (Scout's Eye = stats hidden mode.)
 - **Start button:** full-width amber `#F4A23B`, radius 16, padding 19, label
   "START DRAFTING" Barlow 800 19px uppercase letter-spacing .05em `#0B0D12`.
 - **Links row:** centered, gap 26 — "How to play · History · Settings", Barlow 600 14px
@@ -159,7 +159,7 @@ strip → candidate card (`flex:1`) → action row.
     (`flex:1`, height 5, radius 3, track `#1b2433`, fill amber `#F4A23B` to the stat %)
     + a 30pt right-aligned value (Barlow Condensed 600 11px `#C2C8D2`). Jordan demo:
     PTS 35.0 (97%), REB 5.5 (38%), AST 5.9 (50%), STL 3.2 (91%), BLK 1.6 (40%).
-    (In **HoopIQ** mode hide the bars **and** values — show name/meta only.)
+    (In **Scout's Eye** mode hide the bars **and** values — show name/meta only.)
 - **Action row:** "Skip" pill (54px, 1px border, `#8B93A3`) + full-width amber
   "DRAFT JORDAN" (radius 15, padding 15, Barlow 800 17px uppercase `#0B0D12`).
 
@@ -216,14 +216,14 @@ Top→bottom: badge → hero record → category gauges → roster row → actio
   ~600–900ms, with `expo-haptics` impact on stop — gated by the `haptics` setting).
   Result populates Team + Era; the current position slot is highlighted.
 - **Mode toggle (Home) — sliding selection:** switches `draftStore` mode
-  `classic` ↔ `hoopiq`. On tap (or swipe across the control) the amber selection pill
+  `classic` ↔ `scoutseye`. On tap (or swipe across the control) the amber selection pill
   **slides horizontally** by one segment width — **320ms, cubic-bezier(.4, 0, .2, 1)**,
   no scale/bounce — while the two labels **crossfade** (180ms): active `#0B0D12` on
   amber, inactive `#8B93A3`. Light haptic on change (gated by the Haptics setting).
   Reanimated: `withTiming(index, {duration: 320})`, pill `translateX = index × segW`;
   reduce-motion → snap (no slide). A live demo + full spec is in the design under the
   **"Motion study — Mode toggle"** section (a reference block, not an app screen).
-  In HoopIQ, the candidate stat-gauge block on Draft is hidden.
+  In Scout's Eye, the candidate stat-gauge block on Draft is hidden.
 - **Draft / Skip:** "Draft <player>" fills the current slot and advances PICK n/5;
   "Skip" passes the candidate; "Re-spin" (Direction A had it; optional here) re-rolls.
 - **Results reveal:** count-up on the hero record is a nice touch; gauges can grow-in
@@ -234,7 +234,7 @@ Top→bottom: badge → hero record → category gauges → roster row → actio
 
 ## State Management
 Use existing stores — no new architecture needed.
-- `draftStore`: `mode` ('classic' | 'hoopiq'), current spin (team, era), current
+- `draftStore`: `mode` ('classic' | 'scoutseye'), current spin (team, era), current
   position index, roster slots, candidate, `startGame()`, draft/skip/spin actions.
 - `metaStore`: `best` record, `settings.haptics`, `clearHistory()`, history list.
 - Results derives entirely from the engine's `SimResult` (wins/losses + per-category

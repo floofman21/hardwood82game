@@ -26,7 +26,7 @@ export default function History() {
               <View>
                 <Text style={styles.record}>{item.wins}–{item.losses}</Text>
                 <Text style={styles.meta}>
-                  {item.mode === 'hoopiq' ? 'HoopIQ' : 'Classic'} · {fmt(item.playedAt)}
+                  {item.mode === 'scoutseye' ? "Scout's Eye" : 'Classic'} · {fmt(item.playedAt)}
                 </Text>
               </View>
               {item.wins === 82 && <Text style={styles.perfect}>PERFECT</Text>}
