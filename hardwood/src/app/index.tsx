@@ -3,6 +3,7 @@ import { View, Text, Pressable, Animated, Easing, StyleSheet, LayoutChangeEvent 
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import Svg, { Path } from 'react-native-svg';
 import * as Haptics from 'expo-haptics';
 import { useDraftStore, type GameMode } from '../game/state/draftStore';
 import { useMetaStore } from '../game/state/metaStore';
@@ -15,7 +16,12 @@ export default function Home() {
   const [mode, setMode] = useState<GameMode>('classic');
   const startGame = useDraftStore((s) => s.startGame);
   const best = useMetaStore((s) => s.best);
+  const history = useMetaStore((s) => s.history);
   const haptics = useMetaStore((s) => s.settings.haptics);
+
+  // Margin of the best record over the next-best game (honest "+N" lead).
+  const wins = history.map((g) => g.wins).sort((a, b) => b - a);
+  const delta = wins.length >= 2 ? wins[0] - wins[1] : 0;
 
   const play = () => {
     if (haptics) void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -37,22 +43,45 @@ export default function Home() {
 
       {best && (
         <LinearGradient
-          colors={[colors.surfaceGradA, colors.surfaceGradB]}
+          colors={['#1a2740', '#10141d']}
+          locations={[0, 0.6]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.bestCard}
         >
-          <View style={styles.bestLeft}>
-            <Text style={styles.bestLabel}>PERSONAL BEST</Text>
+          {/* diagonal sheen */}
+          <LinearGradient
+            pointerEvents="none"
+            colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.07)', 'rgba(255,255,255,0)']}
+            locations={[0.38, 0.47, 0.56]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={StyleSheet.absoluteFill}
+          />
+          <View style={styles.bestHeader}>
+            <View style={styles.bestLabelRow}>
+              <Trophy size={14} color={colors.accent} strokeWidth={1.6} />
+              <Text style={styles.bestLabel}>PERSONAL BEST</Text>
+            </View>
+            {bestMeta?.team && (
+              <View style={styles.bestPill}>
+                <Text style={styles.bestPillTxt}>
+                  {bestMeta.team}{bestMeta.decade ? ` · ${bestMeta.decade}` : ''}
+                </Text>
+              </View>
+            )}
+          </View>
+          <View style={styles.bestBottom}>
             <Text style={styles.bestRecord} numberOfLines={1}>
               {best.wins}<Text style={styles.bestDash}>–</Text>{best.losses}
             </Text>
+            {delta > 0 && (
+              <View style={styles.deltaRow}>
+                <TrendUp />
+                <Text style={styles.deltaTxt}>+{delta}</Text>
+              </View>
+            )}
           </View>
-          {bestMeta?.team && (
-            <Text style={styles.bestMeta}>
-              {bestMeta.team}{bestMeta.decade ? `\n${bestMeta.decade}` : ''}
-            </Text>
-          )}
         </LinearGradient>
       )}
 
@@ -129,6 +158,15 @@ function Segment({ title, sub, active, onPress }: { title: string; sub: string; 
   );
 }
 
+function TrendUp() {
+  return (
+    <Svg viewBox="0 0 24 24" width={11} height={11}>
+      <Path d="M3 17l6-6 4 4 8-8" fill="none" stroke={colors.win} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+      <Path d="M16 7h5v5" fill="none" stroke={colors.win} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+    </Svg>
+  );
+}
+
 function Link({ label, onPress }: { label: string; onPress: () => void }) {
   return (
     <Pressable onPress={onPress} hitSlop={8}>
@@ -145,14 +183,22 @@ const styles = StyleSheet.create({
   tagline: { fontFamily: font.r, color: colors.textDim, fontSize: 15, maxWidth: 250, lineHeight: 21 },
 
   bestCard: {
-    borderRadius: radius.card, borderWidth: 1, borderColor: 'rgba(91,157,240,0.22)',
-    padding: 20, marginBottom: space.xl, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    borderRadius: radius.card, borderWidth: 1, borderColor: 'rgba(244,162,59,0.3)',
+    padding: 20, marginBottom: space.xl, overflow: 'hidden',
   },
-  bestLeft: { flexShrink: 1 },
-  bestLabel: { fontFamily: font.xb, color: colors.secondary, fontSize: 11, letterSpacing: 2, fontWeight: '800' },
-  bestRecord: { fontFamily: font.display, color: colors.text, fontSize: 58, fontWeight: '800', letterSpacing: -1, marginTop: 2 },
+  bestHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  bestLabelRow: { flexDirection: 'row', alignItems: 'center', gap: 7 },
+  bestLabel: { fontFamily: font.xb, color: colors.accent, fontSize: 11, letterSpacing: 2, fontWeight: '800' },
+  bestPill: { backgroundColor: 'rgba(244,162,59,0.13)', borderRadius: 20, paddingHorizontal: 9, paddingVertical: 4 },
+  bestPillTxt: { fontFamily: font.b, color: colors.accent, fontSize: 10, fontWeight: '700' },
+  bestBottom: { flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginTop: 14 },
+  bestRecord: {
+    fontFamily: font.display, color: colors.text, fontSize: 60, fontWeight: '800', letterSpacing: -1,
+    textShadowColor: 'rgba(244,162,59,0.45)', textShadowRadius: 24, textShadowOffset: { width: 0, height: 0 },
+  },
   bestDash: { color: colors.secondary },
-  bestMeta: { fontFamily: font.sb, color: colors.textDim, fontSize: 12, textAlign: 'right', fontWeight: '600' },
+  deltaRow: { flexDirection: 'row', alignItems: 'center', gap: 3, paddingBottom: 9 },
+  deltaTxt: { fontFamily: font.xb, color: colors.win, fontSize: 12, fontWeight: '800' },
 
   rafters: {
     flexDirection: 'row', alignItems: 'center', gap: 13, borderRadius: 14,
