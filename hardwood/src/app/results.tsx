@@ -96,7 +96,9 @@ export default function Results() {
           <View style={styles.callout}>
             <View style={styles.calloutDot} />
             <Text style={styles.calloutTxt}>
-              <Text style={styles.calloutWord}>{categoryNames[weak]}</Text> were the wall — {result.losses} game{result.losses === 1 ? '' : 's'} slipped away there.
+              {result.losses <= 6 ? 'One category from perfect — upgrade ' : 'Upgrade your '}
+              <Text style={styles.calloutWord}>{categoryNames[weak]}</Text>
+              {result.losses <= 6 ? ' and 82–0 is yours.' : ' and 82–0 is within reach.'}
             </Text>
           </View>
         )}
@@ -178,10 +180,10 @@ const styles = StyleSheet.create({
   recordShort: { color: colors.text },
   subtitle: { fontFamily: font.sb, color: colors.textDim, fontSize: 15, letterSpacing: 0.8, textAlign: 'center', fontWeight: '600' },
 
-  callout: { flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#1d1311', borderWidth: 1, borderColor: 'rgba(226,96,63,0.4)', borderRadius: radius.panel, paddingVertical: 13, paddingHorizontal: 16, marginTop: space.sm },
-  calloutDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.bad },
-  calloutTxt: { flex: 1, fontFamily: font.m, color: '#d8a99a', fontSize: 13, lineHeight: 19 },
-  calloutWord: { fontFamily: font.b, color: colors.bad, fontWeight: '700' },
+  callout: { flexDirection: 'row', alignItems: 'center', gap: 11, backgroundColor: '#1c1408', borderWidth: 1, borderColor: 'rgba(244,162,59,0.4)', borderRadius: radius.panel, paddingVertical: 13, paddingHorizontal: 16, marginTop: space.sm },
+  calloutDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.accent },
+  calloutTxt: { flex: 1, fontFamily: font.m, color: '#d8b483', fontSize: 13, lineHeight: 19 },
+  calloutWord: { fontFamily: font.b, color: colors.accent, fontWeight: '700' },
 
   sectionLabel: { alignSelf: 'flex-start', fontFamily: font.xb, color: colors.textFaint, fontSize: 11, letterSpacing: 1.8, fontWeight: '800', marginTop: space.md },
   gauges: { alignSelf: 'stretch', gap: space.sm },
