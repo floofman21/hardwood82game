@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   top: { marginTop: space.xxl, marginBottom: space.xl, gap: space.md },
   eyebrow: { alignSelf: 'flex-start', backgroundColor: colors.accent, borderRadius: 5, paddingHorizontal: 9, paddingVertical: 5 },
   eyebrowTxt: { fontFamily: font.xb, color: colors.onAmber, fontSize: 11, letterSpacing: 1.6, fontWeight: '800' },
-  tagline: { fontFamily: font.r, color: colors.textDim, fontSize: 15, maxWidth: 250, lineHeight: 21 },
+  tagline: { fontFamily: font.r, color: '#FFFFFF', fontSize: 15, maxWidth: 250, lineHeight: 21 },
 
   bestCard: {
     borderRadius: radius.card, borderWidth: 1, borderColor: 'rgba(244,162,59,0.3)',

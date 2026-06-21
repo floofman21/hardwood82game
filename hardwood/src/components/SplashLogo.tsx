@@ -70,8 +70,6 @@ export function SplashLogo({ size = 58 }: { size?: number }) {
   return (
     <View style={styles.wrap}>
       <View style={styles.center}>
-        <Text style={styles.eyebrow}>DRAFT THE ALL-TIME TEAM</Text>
-
         <View style={styles.logoRow}>
           <Text style={[styles.letter, letter]}>H</Text>
           <View style={{ width: zoneW, height: zoneH }}>
@@ -91,6 +89,7 @@ export function SplashLogo({ size = 58 }: { size?: number }) {
           <Text style={[styles.letter, letter]}>P</Text>
           <Text style={[styles.letter, letter, { color: colors.accent }]}>LORE</Text>
         </View>
+        <Text style={styles.eyebrow}>DRAFT THE ALL-TIME TEAM</Text>
       </View>
 
       <View style={styles.bottom}>
