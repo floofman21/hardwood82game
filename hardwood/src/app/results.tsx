@@ -3,9 +3,12 @@ import { View, Text, ScrollView, Pressable, Share, StyleSheet } from 'react-nati
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import { captureRef } from 'react-native-view-shot';
+import * as Sharing from 'expo-sharing';
 import { useDraftStore } from '../game/state/draftStore';
 import { useMetaStore } from '../game/state/metaStore';
 import { SegmentMeter } from '../components/SegmentMeter';
+import { ShareCard, SHARE_CARD_WIDTH } from '../components/ShareCard';
 import { colors, space, radius, font, categoryNames } from '../theme/tokens';
 import { STATS, type Stat } from '../game/data/types';
 import { LINEUP_SLOTS } from '../game/rules/decades';
@@ -14,6 +17,7 @@ export default function Results() {
   const { result, roster, mode, reset, startGame } = useDraftStore();
   const recordGame = useMetaStore((s) => s.recordGame);
   const recordedRef = useRef(false);
+  const shareRef = useRef<View>(null);
 
   useEffect(() => {
     if (!result || recordedRef.current) return;
@@ -46,10 +50,20 @@ export default function Results() {
   for (const c of STATS) if (result.categories[c].normalized < result.categories[weak].normalized) weak = c;
 
   const playAgain = () => { reset(); startGame(mode); router.replace('/draft'); };
-  const onShare = () => {
-    void Share.share({
-      message: `HoopLore — I went ${result.wins}–${result.losses}${perfect ? ' (PERFECT SEASON 🏆)' : ''}. Can you run the table?`,
-    });
+
+  const shareText = `HoopLore — I went ${result.wins}–${result.losses}${perfect ? ' (PERFECT SEASON 🏆)' : ''}. Can you run the table?`;
+  const onShare = async () => {
+    try {
+      const uri = await captureRef(shareRef, { format: 'png', quality: 1 });
+      if (await Sharing.isAvailableAsync()) {
+        await Sharing.shareAsync(uri, { mimeType: 'image/png', dialogTitle: 'Share your season' });
+        return;
+      }
+      await Share.share({ message: shareText, url: uri });
+    } catch {
+      // Fall back to a plain text share if image capture/sharing isn't available.
+      await Share.share({ message: shareText });
+    }
   };
 
   return (
@@ -134,12 +148,20 @@ export default function Results() {
           <Text style={styles.homeTxt}>Home</Text>
         </Pressable>
       </ScrollView>
+
+      {/* Off-screen branded card captured for sharing. */}
+      <View collapsable={false} style={styles.shareStage} pointerEvents="none">
+        <View ref={shareRef} collapsable={false}>
+          <ShareCard result={result} roster={roster} />
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
+  shareStage: { position: 'absolute', left: -9999, top: 0, width: SHARE_CARD_WIDTH },
   glow: { position: 'absolute', top: 0, left: 0, right: 0, height: 300 },
   scroll: { paddingHorizontal: space.xl, paddingTop: space.lg, paddingBottom: space.xl, gap: space.md, alignItems: 'center' },
   empty: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: space.md },
