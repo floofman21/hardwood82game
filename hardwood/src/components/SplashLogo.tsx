@@ -69,8 +69,6 @@ export function SplashLogo({ size = 58 }: { size?: number }) {
 
   return (
     <View style={styles.wrap}>
-      <View style={styles.glow} />
-
       <View style={styles.center}>
         <Text style={styles.eyebrow}>DRAFT THE ALL-TIME TEAM</Text>
 
@@ -163,7 +161,6 @@ function RimFront({ size }: { size: number }) {
 
 const styles = StyleSheet.create({
   wrap: { flex: 1, backgroundColor: colors.bg, alignItems: 'center', justifyContent: 'center' },
-  glow: { position: 'absolute', width: 400, height: 400, borderRadius: 200, backgroundColor: colors.glowAmberSoft, top: '24%' },
   center: { alignItems: 'center', gap: 16 },
   eyebrow: { fontFamily: font.xb, color: colors.textFaint, fontSize: 11, letterSpacing: 3.4, fontWeight: '800' },
   logoRow: { flexDirection: 'row', alignItems: 'center' },
