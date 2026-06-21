@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, Pressable, Animated, Easing, StyleSheet, LayoutChangeEvent } from 'react-native';
+import { View, Text, Pressable, Animated, Easing, StyleSheet, LayoutChangeEvent, AccessibilityInfo } from 'react-native';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -86,7 +86,7 @@ export default function Home() {
         </LinearGradient>
       </Pressable>
 
-      <ModeToggle mode={mode} onChange={(m) => { if (haptics && m !== mode) void Haptics.selectionAsync(); setMode(m); }} />
+      <ModeToggle mode={mode} onChange={(m) => { if (haptics && m !== mode) void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); setMode(m); }} />
 
       <View style={styles.bottom}>
         <Pressable onPress={play} style={({ pressed }) => [styles.play, pressed && { opacity: 0.9 }]}>
@@ -106,17 +106,32 @@ export default function Home() {
 
 function ModeToggle({ mode, onChange }: { mode: GameMode; onChange: (m: GameMode) => void }) {
   const [w, setW] = useState(0);
-  const x = useRef(new Animated.Value(0)).current;
   const index = mode === 'classic' ? 0 : 1;
+  // Pill slide runs on the native driver (transform); the label color crossfade
+  // must run on the JS driver (color isn't native-animatable). Two values, two
+  // durations — exactly the motion-study spec.
+  const pillX = useRef(new Animated.Value(index)).current;
+  const fade = useRef(new Animated.Value(index)).current;
+  const reduce = useRef(false);
 
   useEffect(() => {
-    Animated.timing(x, {
+    AccessibilityInfo.isReduceMotionEnabled?.().then((v) => { reduce.current = !!v; });
+  }, []);
+
+  useEffect(() => {
+    Animated.timing(pillX, {
       toValue: index,
-      duration: 320,
+      duration: reduce.current ? 0 : 320,
       easing: Easing.bezier(0.4, 0, 0.2, 1),
       useNativeDriver: true,
     }).start();
-  }, [index, x]);
+    Animated.timing(fade, {
+      toValue: index,
+      duration: reduce.current ? 0 : 180,
+      easing: Easing.inOut(Easing.ease),
+      useNativeDriver: false,
+    }).start();
+  }, [index, pillX, fade]);
 
   const onLayout = (e: LayoutChangeEvent) => setW(e.nativeEvent.layout.width);
   const segW = w > 0 ? (w - 10) / 2 : 0; // container padding 5 each side
@@ -127,21 +142,34 @@ function ModeToggle({ mode, onChange }: { mode: GameMode; onChange: (m: GameMode
         <Animated.View
           style={[
             styles.togglePill,
-            { width: segW, transform: [{ translateX: Animated.multiply(x, segW) }] },
+            { width: segW, transform: [{ translateX: Animated.multiply(pillX, segW) }] },
           ]}
         />
       )}
-      <Segment title="CLASSIC" sub="Stats shown" active={index === 0} onPress={() => onChange('classic')} />
-      <Segment title="SCOUT'S EYE" sub="Stats hidden" active={index === 1} onPress={() => onChange('scoutseye')} />
+      <Segment seg={0} fade={fade} title="CLASSIC" sub="Stats shown" onPress={() => onChange('classic')} />
+      <Segment seg={1} fade={fade} title="SCOUT'S EYE" sub="Stats hidden" onPress={() => onChange('scoutseye')} />
     </View>
   );
 }
 
-function Segment({ title, sub, active, onPress }: { title: string; sub: string; active: boolean; onPress: () => void }) {
+function Segment({
+  seg, fade, title, sub, onPress,
+}: {
+  seg: 0 | 1; fade: Animated.Value; title: string; sub: string; onPress: () => void;
+}) {
+  // active = on amber (#0B0D12), inactive = #8B93A3; subs crossfade in step.
+  const titleColor = fade.interpolate({
+    inputRange: [0, 1],
+    outputRange: seg === 0 ? [colors.onAmber, colors.textDim] : [colors.textDim, colors.onAmber],
+  });
+  const subColor = fade.interpolate({
+    inputRange: [0, 1],
+    outputRange: seg === 0 ? ['rgba(11,13,18,0.7)', colors.textFaint] : [colors.textFaint, 'rgba(11,13,18,0.7)'],
+  });
   return (
     <Pressable style={styles.segment} onPress={onPress}>
-      <Text style={[styles.segTitle, { color: active ? colors.onAmber : colors.textDim }]}>{title}</Text>
-      <Text style={[styles.segSub, { color: active ? 'rgba(11,13,18,0.7)' : colors.textFaint }]}>{sub}</Text>
+      <Animated.Text style={[styles.segTitle, { color: titleColor }]}>{title}</Animated.Text>
+      <Animated.Text style={[styles.segSub, { color: subColor }]}>{sub}</Animated.Text>
     </Pressable>
   );
 }
