@@ -61,10 +61,10 @@ export function SplashLogo({ size = 58 }: { size?: number }) {
         ],
       };
 
-  const zoneW = ball * 2.1;
+  const hoopLeft = ball * 0.95;
+  const zoneW = hoopLeft + ball; // exactly spans ball + hoop, no trailing gap
   const zoneH = ball * 1.3;
   const ballTop = (zoneH - ball) / 2;
-  const hoopLeft = ball * 0.95;
   const letter = { fontFamily: font.display, fontSize: size, color: colors.text };
 
   return (
