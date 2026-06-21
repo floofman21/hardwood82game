@@ -9,7 +9,6 @@ import { useDraftStore, type GameMode } from '../game/state/draftStore';
 import { useMetaStore } from '../game/state/metaStore';
 import { BrandWordmark } from '../components/BrandWordmark';
 import { Trophy } from '../components/Trophy';
-import { rosterIdentity } from '../game/data/rosterMeta';
 import { colors, space, radius, font } from '../theme/tokens';
 
 export default function Home() {
@@ -28,8 +27,6 @@ export default function Home() {
     startGame(mode);
     router.push('/draft');
   };
-
-  const bestMeta = best ? rosterIdentity(best.rosterIds) : null;
 
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
@@ -58,18 +55,9 @@ export default function Home() {
             end={{ x: 1, y: 1 }}
             style={StyleSheet.absoluteFill}
           />
-          <View style={styles.bestHeader}>
-            <View style={styles.bestLabelRow}>
-              <Trophy size={14} color={colors.accent} strokeWidth={1.6} />
-              <Text style={styles.bestLabel}>PERSONAL BEST</Text>
-            </View>
-            {bestMeta?.team && (
-              <View style={styles.bestPill}>
-                <Text style={styles.bestPillTxt}>
-                  {bestMeta.team}{bestMeta.decade ? ` · ${bestMeta.decade}` : ''}
-                </Text>
-              </View>
-            )}
+          <View style={styles.bestLabelRow}>
+            <Trophy size={14} color={colors.accent} strokeWidth={1.6} />
+            <Text style={styles.bestLabel}>PERSONAL BEST</Text>
           </View>
           <View style={styles.bestBottom}>
             <Text style={styles.bestRecord} numberOfLines={1}>
@@ -186,11 +174,8 @@ const styles = StyleSheet.create({
     borderRadius: radius.card, borderWidth: 1, borderColor: 'rgba(244,162,59,0.3)',
     padding: 20, marginBottom: space.xl, overflow: 'hidden',
   },
-  bestHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   bestLabelRow: { flexDirection: 'row', alignItems: 'center', gap: 7 },
   bestLabel: { fontFamily: font.xb, color: colors.accent, fontSize: 11, letterSpacing: 2, fontWeight: '800' },
-  bestPill: { backgroundColor: 'rgba(244,162,59,0.13)', borderRadius: 20, paddingHorizontal: 9, paddingVertical: 4 },
-  bestPillTxt: { fontFamily: font.b, color: colors.accent, fontSize: 10, fontWeight: '700' },
   bestBottom: { flexDirection: 'row', alignItems: 'flex-end', gap: 8, marginTop: 14 },
   bestRecord: {
     fontFamily: font.display, color: colors.text, fontSize: 60, fontWeight: '800', letterSpacing: -1,
