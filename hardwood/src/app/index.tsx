@@ -7,6 +7,7 @@ import * as Haptics from 'expo-haptics';
 import { useDraftStore, type GameMode } from '../game/state/draftStore';
 import { useMetaStore } from '../game/state/metaStore';
 import { BrandWordmark } from '../components/BrandWordmark';
+import { Trophy } from '../components/Trophy';
 import { rosterIdentity } from '../game/data/rosterMeta';
 import { colors, space, radius, font } from '../theme/tokens';
 
@@ -54,6 +55,19 @@ export default function Home() {
           )}
         </LinearGradient>
       )}
+
+      <Pressable onPress={() => router.push('/rafters')} style={({ pressed }) => [pressed && { opacity: 0.9 }]}>
+        <LinearGradient colors={['#1c160a', '#13110b']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.rafters}>
+          <LinearGradient colors={['#e9b53c', '#fff3c4', '#d8a634']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.raftersIcon}>
+            <Trophy size={20} color="#15110a" />
+          </LinearGradient>
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <Text style={styles.raftersTitle}>THE RAFTERS</Text>
+            <Text style={styles.raftersSub}>Your top 5 all-time lineups</Text>
+          </View>
+          <Text style={styles.raftersChev}>›</Text>
+        </LinearGradient>
+      </Pressable>
 
       <ModeToggle mode={mode} onChange={(m) => { if (haptics && m !== mode) void Haptics.selectionAsync(); setMode(m); }} />
 
@@ -139,6 +153,16 @@ const styles = StyleSheet.create({
   bestRecord: { fontFamily: font.display, color: colors.text, fontSize: 58, fontWeight: '800', letterSpacing: -1, marginTop: 2 },
   bestDash: { color: colors.secondary },
   bestMeta: { fontFamily: font.sb, color: colors.textDim, fontSize: 12, textAlign: 'right', fontWeight: '600' },
+
+  rafters: {
+    flexDirection: 'row', alignItems: 'center', gap: 13, borderRadius: 14,
+    paddingVertical: 14, paddingHorizontal: 16, borderWidth: 1,
+    borderColor: 'rgba(233,181,60,0.4)', marginBottom: space.xl,
+  },
+  raftersIcon: { width: 38, height: 38, borderRadius: 10, alignItems: 'center', justifyContent: 'center' },
+  raftersTitle: { fontFamily: font.display, color: colors.text, fontSize: 20, fontWeight: '800' },
+  raftersSub: { fontFamily: font.m, color: '#E9B53C', fontSize: 11, marginTop: 3 },
+  raftersChev: { color: colors.textDim, fontSize: 18, fontWeight: '700' },
 
   toggle: {
     flexDirection: 'row', backgroundColor: '#12161e', borderRadius: 14,
