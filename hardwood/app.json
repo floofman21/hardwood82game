@@ -9,7 +9,7 @@
     "newArchEnabled": true,
     "splash": { "backgroundColor": "#0E0F12", "resizeMode": "contain" },
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.hooplore.app",
       "config": { "usesNonExemptEncryption": false }
     },
