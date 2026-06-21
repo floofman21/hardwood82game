@@ -79,7 +79,7 @@ export default function Rafters() {
 
         <View style={styles.actions}>
           <Pressable onPress={() => router.push('/history')} style={({ pressed }) => [styles.compare, pressed && { opacity: 0.85 }]}>
-            <Text style={styles.compareTxt}>COMPARE</Text>
+            <Text style={styles.compareTxt}>FULL HISTORY</Text>
           </Pressable>
           <Pressable onPress={newDraft} style={({ pressed }) => [pressed && { opacity: 0.9 }, { flex: 1 }]}>
             <LinearGradient colors={['#e9b53c', '#fff3c4', '#d8a634']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.newDraft}>
