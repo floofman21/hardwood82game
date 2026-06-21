@@ -1,11 +1,15 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, ScrollView, Pressable, Share, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, Pressable, Share, Animated, StyleSheet } from 'react-native';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import { captureRef } from 'react-native-view-shot';
+import * as Sharing from 'expo-sharing';
 import { useDraftStore } from '../game/state/draftStore';
 import { useMetaStore } from '../game/state/metaStore';
 import { SegmentMeter } from '../components/SegmentMeter';
+import { ShareCard, SHARE_CARD_WIDTH } from '../components/ShareCard';
+import { useReduceMotion } from '../hooks/useReduceMotion';
 import { colors, space, radius, font, categoryNames } from '../theme/tokens';
 import { STATS, type Stat } from '../game/data/types';
 import { LINEUP_SLOTS } from '../game/rules/decades';
@@ -14,6 +18,9 @@ export default function Results() {
   const { result, roster, mode, reset, startGame } = useDraftStore();
   const recordGame = useMetaStore((s) => s.recordGame);
   const recordedRef = useRef(false);
+  const shareRef = useRef<View>(null);
+  const reduced = useReduceMotion();
+  const recordScale = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     if (!result || recordedRef.current) return;
@@ -28,6 +35,14 @@ export default function Results() {
       rosterIds: lineup.map((p) => p!.id),
     });
   }, [result]);
+
+  // Over-the-top entrance for a perfect season: the record springs in.
+  useEffect(() => {
+    if (result?.perfect && !reduced) {
+      recordScale.setValue(0.8);
+      Animated.spring(recordScale, { toValue: 1, friction: 5, tension: 90, useNativeDriver: true }).start();
+    }
+  }, [result, reduced, recordScale]);
 
   if (!result) {
     return (
@@ -46,10 +61,20 @@ export default function Results() {
   for (const c of STATS) if (result.categories[c].normalized < result.categories[weak].normalized) weak = c;
 
   const playAgain = () => { reset(); startGame(mode); router.replace('/draft'); };
-  const onShare = () => {
-    void Share.share({
-      message: `HoopLore — I went ${result.wins}–${result.losses}${perfect ? ' (PERFECT SEASON 🏆)' : ''}. Can you run the table?`,
-    });
+
+  const shareText = `HoopLore — I went ${result.wins}–${result.losses}${perfect ? ' (PERFECT SEASON 🏆)' : ''}. Can you run the table?`;
+  const onShare = async () => {
+    try {
+      const uri = await captureRef(shareRef, { format: 'png', quality: 1 });
+      if (await Sharing.isAvailableAsync()) {
+        await Sharing.shareAsync(uri, { mimeType: 'image/png', dialogTitle: 'Share your season' });
+        return;
+      }
+      await Share.share({ message: shareText, url: uri });
+    } catch {
+      // Fall back to a plain text share if image capture/sharing isn't available.
+      await Share.share({ message: shareText });
+    }
   };
 
   return (
@@ -70,9 +95,11 @@ export default function Results() {
         )}
 
         {/* Hero record */}
-        <Text style={[styles.record, perfect ? styles.recordWin : styles.recordShort]}>
-          {result.wins}<Text style={{ color: perfect ? colors.win : colors.accent }}>–</Text>{result.losses}
-        </Text>
+        <Animated.View style={{ transform: [{ scale: recordScale }] }}>
+          <Text style={[styles.record, perfect ? styles.recordWin : styles.recordShort]}>
+            {result.wins}<Text style={{ color: perfect ? colors.win : colors.accent }}>–</Text>{result.losses}
+          </Text>
+        </Animated.View>
         <Text style={styles.subtitle}>
           {perfect ? 'NO WEAK CATEGORY. THEY RAN THE TABLE.' : 'TITLE CONTENDER — NOT YET IMMORTAL.'}
         </Text>
@@ -82,7 +109,9 @@ export default function Results() {
           <View style={styles.callout}>
             <View style={styles.calloutDot} />
             <Text style={styles.calloutTxt}>
-              <Text style={styles.calloutWord}>{categoryNames[weak]}</Text> were the wall — {result.losses} game{result.losses === 1 ? '' : 's'} slipped away there.
+              {result.losses <= 6 ? 'One category from perfect — upgrade ' : 'Upgrade your '}
+              <Text style={styles.calloutWord}>{categoryNames[weak]}</Text>
+              {result.losses <= 6 ? ' and 82–0 is yours.' : ' and 82–0 is within reach.'}
             </Text>
           </View>
         )}
@@ -134,12 +163,20 @@ export default function Results() {
           <Text style={styles.homeTxt}>Home</Text>
         </Pressable>
       </ScrollView>
+
+      {/* Off-screen branded card captured for sharing. */}
+      <View collapsable={false} style={styles.shareStage} pointerEvents="none">
+        <View ref={shareRef} collapsable={false}>
+          <ShareCard result={result} roster={roster} />
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
+  shareStage: { position: 'absolute', left: -9999, top: 0, width: SHARE_CARD_WIDTH },
   glow: { position: 'absolute', top: 0, left: 0, right: 0, height: 300 },
   scroll: { paddingHorizontal: space.xl, paddingTop: space.lg, paddingBottom: space.xl, gap: space.md, alignItems: 'center' },
   empty: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: space.md },
@@ -156,10 +193,10 @@ const styles = StyleSheet.create({
   recordShort: { color: colors.text },
   subtitle: { fontFamily: font.sb, color: colors.textDim, fontSize: 15, letterSpacing: 0.8, textAlign: 'center', fontWeight: '600' },
 
-  callout: { flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#1d1311', borderWidth: 1, borderColor: 'rgba(226,96,63,0.4)', borderRadius: radius.panel, paddingVertical: 13, paddingHorizontal: 16, marginTop: space.sm },
-  calloutDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.bad },
-  calloutTxt: { flex: 1, fontFamily: font.m, color: '#d8a99a', fontSize: 13, lineHeight: 19 },
-  calloutWord: { fontFamily: font.b, color: colors.bad, fontWeight: '700' },
+  callout: { flexDirection: 'row', alignItems: 'center', gap: 11, backgroundColor: '#1c1408', borderWidth: 1, borderColor: 'rgba(244,162,59,0.4)', borderRadius: radius.panel, paddingVertical: 13, paddingHorizontal: 16, marginTop: space.sm },
+  calloutDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.accent },
+  calloutTxt: { flex: 1, fontFamily: font.m, color: '#d8b483', fontSize: 13, lineHeight: 19 },
+  calloutWord: { fontFamily: font.b, color: colors.accent, fontWeight: '700' },
 
   sectionLabel: { alignSelf: 'flex-start', fontFamily: font.xb, color: colors.textFaint, fontSize: 11, letterSpacing: 1.8, fontWeight: '800', marginTop: space.md },
   gauges: { alignSelf: 'stretch', gap: space.sm },

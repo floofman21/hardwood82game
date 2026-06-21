@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  View, Text, Pressable, ScrollView, StyleSheet,
+  View, Text, Pressable, ScrollView, StyleSheet, Animated, Easing,
   NativeSyntheticEvent, NativeScrollEvent, Dimensions,
 } from 'react-native';
 import { router } from 'expo-router';
@@ -12,6 +12,8 @@ import { useMetaStore } from '../game/state/metaStore';
 import { SpinReels } from '../components/SpinReels';
 import { RosterStrip } from '../components/RosterStrip';
 import { CandidateCard } from '../components/CandidateCard';
+import { DraftButton } from '../components/DraftButton';
+import { useReduceMotion } from '../hooks/useReduceMotion';
 import { colors, space, radius, font } from '../theme/tokens';
 
 const SIDE = space.xl; // 24
@@ -23,16 +25,35 @@ export default function Draft() {
   const s = useDraftStore();
   const { status, currentSpin, choices, roster, skips, pendingPlayer, mode } = s;
   const haptics = useMetaStore((st) => st.settings.haptics);
+  const reduced = useReduceMotion();
 
   const [cycleToken, setCycleToken] = useState(0);
   const [reeling, setReeling] = useState(false);
   const [cardIndex, setCardIndex] = useState(0);
   const spinIdRef = useRef<string | undefined>(undefined);
   const scrollRef = useRef<ScrollView>(null);
+  const lockFlash = useRef(new Animated.Value(0)).current;
 
   useEffect(() => { if (status === 'idle') router.replace('/'); }, [status]);
   useEffect(() => { if (status === 'spinning') s.spin(); }, [status]);
-  useEffect(() => { if (status === 'complete') router.replace('/results'); }, [status]);
+
+  // Lineup complete -> a charge-up flash (green + Success haptic for a perfect
+  // 82-0, amber + heavy impact otherwise) then hand off to the season sim.
+  useEffect(() => {
+    if (status !== 'complete') return;
+    const go = () => router.replace('/simulating');
+    if (reduced) { go(); return; }
+    const perfect = !!s.result?.perfect;
+    if (haptics) {
+      if (perfect) void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      else void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+    }
+    Animated.sequence([
+      Animated.timing(lockFlash, { toValue: 1, duration: perfect ? 420 : 260, easing: Easing.out(Easing.quad), useNativeDriver: true }),
+      Animated.timing(lockFlash, { toValue: 0, duration: perfect ? 380 : 220, easing: Easing.in(Easing.quad), useNativeDriver: true }),
+    ]).start(go);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
 
   // Each new spin result drives a reel animation + resets the carousel.
   useEffect(() => {
@@ -70,7 +91,6 @@ export default function Draft() {
 
   const draftCandidate = () => {
     if (!candidate) return;
-    if (haptics) void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     s.selectPlayer(candidate);
   };
 
@@ -172,21 +192,33 @@ export default function Draft() {
               ))}
               <Text style={styles.swipe}>SWIPE</Text>
             </View>
+
+            {/* Action row — sits right under the cards */}
+            {candidate && (
+              <View style={styles.actions}>
+                <Pressable onPress={skipCandidate} style={({ pressed }) => [styles.skip, pressed && { opacity: 0.85 }]}>
+                  <Text style={styles.skipTxt}>Skip</Text>
+                </Pressable>
+                <DraftButton
+                  label={`DRAFT ${candidate.name.split(' ').slice(-1)[0].toUpperCase()}`}
+                  onCommit={draftCandidate}
+                  reduced={reduced}
+                  haptics={haptics}
+                />
+              </View>
+            )}
           </>
         )}
       </ScrollView>
 
-      {/* Action row */}
-      {!reeling && status === 'picking' && candidate && (
-        <View style={styles.actions}>
-          <Pressable onPress={skipCandidate} style={({ pressed }) => [styles.skip, pressed && { opacity: 0.85 }]}>
-            <Text style={styles.skipTxt}>Skip</Text>
-          </Pressable>
-          <Pressable onPress={draftCandidate} style={({ pressed }) => [styles.draft, pressed && { opacity: 0.9 }]}>
-            <Text style={styles.draftTxt}>DRAFT {candidate.name.split(' ').slice(-1)[0].toUpperCase()}</Text>
-          </Pressable>
-        </View>
-      )}
+      {/* lock-in charge flash */}
+      <Animated.View
+        pointerEvents="none"
+        style={[
+          StyleSheet.absoluteFill,
+          { backgroundColor: s.result?.perfect ? colors.win : colors.accent, opacity: lockFlash.interpolate({ inputRange: [0, 1], outputRange: [0, 0.55] }) },
+        ]}
+      />
     </SafeAreaView>
   );
 }
@@ -244,9 +276,7 @@ const styles = StyleSheet.create({
   slotBtn: { width: 58, height: 58, borderRadius: radius.md, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.accent, alignItems: 'center', justifyContent: 'center' },
   slotBtnTxt: { fontFamily: font.xb, color: colors.accent, fontWeight: '800', fontSize: 17 },
 
-  actions: { flexDirection: 'row', gap: space.md, paddingHorizontal: SIDE, paddingTop: space.sm, paddingBottom: space.md },
-  skip: { paddingHorizontal: 20, borderRadius: radius.btn, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center' },
+  actions: { flexDirection: 'row', gap: space.md, marginTop: space.lg },
+  skip: { paddingHorizontal: 20, paddingVertical: 15, borderRadius: radius.btn, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center' },
   skipTxt: { fontFamily: font.sb, color: colors.textDim, fontSize: 14, fontWeight: '600' },
-  draft: { flex: 1, backgroundColor: colors.accent, borderRadius: radius.btn, paddingVertical: 15, alignItems: 'center' },
-  draftTxt: { fontFamily: font.xb, color: colors.onAmber, fontSize: 17, fontWeight: '800', letterSpacing: 0.5 },
 });
