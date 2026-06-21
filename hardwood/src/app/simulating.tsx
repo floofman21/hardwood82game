@@ -3,7 +3,10 @@ import { View, Text, Pressable, Animated, Easing, StyleSheet } from 'react-nativ
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import * as Haptics from 'expo-haptics';
 import { useDraftStore } from '../game/state/draftStore';
+import { useMetaStore } from '../game/state/metaStore';
+import { useReduceMotion } from '../hooks/useReduceMotion';
 import { colors, space, radius, font } from '../theme/tokens';
 import { LINEUP_SLOTS } from '../game/rules/decades';
 
@@ -11,7 +14,11 @@ const SIM_MS = 4500;
 
 export default function Simulating() {
   const { result, roster } = useDraftStore();
+  const haptics = useMetaStore((s) => s.settings.haptics);
+  const reduced = useReduceMotion();
   const anim = useRef(new Animated.Value(0)).current;
+  const glow = useRef(new Animated.Value(0)).current;
+  const recordScale = useRef(new Animated.Value(1)).current;
   const doneRef = useRef(false);
   const [counts, setCounts] = useState({ w: 0, l: 0, g: 0 });
   const [flash, setFlash] = useState(false);
@@ -34,8 +41,27 @@ export default function Simulating() {
       const l = Math.round(value * finalLosses);
       setCounts((prev) => (prev.w === w && prev.l === l && prev.g === g ? prev : { w, l, g }));
     });
-    Animated.timing(anim, { toValue: 1, duration: SIM_MS, easing: Easing.out(Easing.cubic), useNativeDriver: false })
-      .start(({ finished }) => { if (finished) goResults(); });
+
+    // charge-in: the arena glow ramps up, then the count runs.
+    Animated.timing(glow, { toValue: 1, duration: reduced ? 0 : 600, easing: Easing.out(Easing.quad), useNativeDriver: true }).start();
+    Animated.timing(anim, {
+      toValue: 1,
+      duration: reduced ? 500 : SIM_MS,
+      delay: reduced ? 0 : 450,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
+    }).start(({ finished }) => {
+      if (!finished) return;
+      // over-the-top moment for a perfect 82-0
+      if (result.perfect && !reduced) {
+        if (haptics) void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        recordScale.setValue(0.88);
+        Animated.spring(recordScale, { toValue: 1, friction: 4, tension: 110, useNativeDriver: true }).start();
+        setTimeout(goResults, 700);
+      } else {
+        goResults();
+      }
+    });
 
     const beat = setInterval(() => setFlash((f) => !f), 320);
     return () => { anim.removeListener(id); clearInterval(beat); };
@@ -48,13 +74,14 @@ export default function Simulating() {
 
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
-      <LinearGradient
-        pointerEvents="none"
-        colors={['rgba(62,201,138,0.12)', 'rgba(62,201,138,0)']}
-        start={{ x: 0.5, y: 0 }}
-        end={{ x: 0.5, y: 1 }}
-        style={styles.glow}
-      />
+      <Animated.View style={[styles.glow, { opacity: glow }]} pointerEvents="none">
+        <LinearGradient
+          colors={['rgba(62,201,138,0.12)', 'rgba(62,201,138,0)']}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          style={StyleSheet.absoluteFill}
+        />
+      </Animated.View>
       <View style={styles.body}>
         <View style={styles.liveRow}>
           <View style={[styles.liveDot, { opacity: flash ? 1 : 0.3 }]} />
@@ -65,11 +92,13 @@ export default function Simulating() {
           Game <Text style={styles.gameNum}>{counts.g}</Text> of 82
         </Text>
 
-        <Text style={styles.record} numberOfLines={1} adjustsFontSizeToFit>
-          <Text style={{ color: colors.win }}>{counts.w}</Text>
-          <Text style={{ color: colors.reelInactive }}>–</Text>
-          <Text style={{ color: colors.bad }}>{counts.l}</Text>
-        </Text>
+        <Animated.View style={{ transform: [{ scale: recordScale }] }}>
+          <Text style={styles.record} numberOfLines={1} adjustsFontSizeToFit>
+            <Text style={{ color: colors.win }}>{counts.w}</Text>
+            <Text style={{ color: colors.reelInactive }}>–</Text>
+            <Text style={{ color: colors.bad }}>{counts.l}</Text>
+          </Text>
+        </Animated.View>
 
         <View style={styles.tags}>
           <View style={styles.tag}>

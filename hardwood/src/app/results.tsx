@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, ScrollView, Pressable, Share, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, Pressable, Share, Animated, StyleSheet } from 'react-native';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -9,6 +9,7 @@ import { useDraftStore } from '../game/state/draftStore';
 import { useMetaStore } from '../game/state/metaStore';
 import { SegmentMeter } from '../components/SegmentMeter';
 import { ShareCard, SHARE_CARD_WIDTH } from '../components/ShareCard';
+import { useReduceMotion } from '../hooks/useReduceMotion';
 import { colors, space, radius, font, categoryNames } from '../theme/tokens';
 import { STATS, type Stat } from '../game/data/types';
 import { LINEUP_SLOTS } from '../game/rules/decades';
@@ -18,6 +19,8 @@ export default function Results() {
   const recordGame = useMetaStore((s) => s.recordGame);
   const recordedRef = useRef(false);
   const shareRef = useRef<View>(null);
+  const reduced = useReduceMotion();
+  const recordScale = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     if (!result || recordedRef.current) return;
@@ -32,6 +35,14 @@ export default function Results() {
       rosterIds: lineup.map((p) => p!.id),
     });
   }, [result]);
+
+  // Over-the-top entrance for a perfect season: the record springs in.
+  useEffect(() => {
+    if (result?.perfect && !reduced) {
+      recordScale.setValue(0.8);
+      Animated.spring(recordScale, { toValue: 1, friction: 5, tension: 90, useNativeDriver: true }).start();
+    }
+  }, [result, reduced, recordScale]);
 
   if (!result) {
     return (
@@ -84,9 +95,11 @@ export default function Results() {
         )}
 
         {/* Hero record */}
-        <Text style={[styles.record, perfect ? styles.recordWin : styles.recordShort]}>
-          {result.wins}<Text style={{ color: perfect ? colors.win : colors.accent }}>–</Text>{result.losses}
-        </Text>
+        <Animated.View style={{ transform: [{ scale: recordScale }] }}>
+          <Text style={[styles.record, perfect ? styles.recordWin : styles.recordShort]}>
+            {result.wins}<Text style={{ color: perfect ? colors.win : colors.accent }}>–</Text>{result.losses}
+          </Text>
+        </Animated.View>
         <Text style={styles.subtitle}>
           {perfect ? 'NO WEAK CATEGORY. THEY RAN THE TABLE.' : 'TITLE CONTENDER — NOT YET IMMORTAL.'}
         </Text>
