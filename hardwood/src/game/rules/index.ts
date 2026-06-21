@@ -23,11 +23,12 @@ export const ADJ_CLAMP = 1.6;               // caps any single era-adjusted stat
 // A lineup that maxes every category against these reaches S~1 and can chase 82-0.
 export const CEIL: Record<Stat, number> = { PTS: 4.8, REB: 3.9, AST: 3.1, STL: 3.7, BLK: 2.6 };
 // How much each category counts toward the final score (applied in the strength
-// blend, not normalization). PTS/REB/AST are the primary considerations; STL/BLK
-// count half as much, so the defensive categories — the strict-mode bottleneck —
-// stay relevant without dominating. A fully balanced roster is unchanged, so 82-0
-// remains reachable.
-export const WEIGHT: Record<Stat, number> = { PTS: 1, REB: 1, AST: 1, STL: 0.5, BLK: 0.5 };
+// blend, not normalization). PTS/REB/AST are what basketball is won on, so they
+// carry full weight. Steals count less and blocks least — they're the strict-mode
+// bottleneck (one true center), so a stacked-offense roster with thin rim
+// protection shouldn't be dragged to a poor record. A fully balanced roster still
+// maxes everything, so a perfect 82-0 remains reachable.
+export const WEIGHT: Record<Stat, number> = { PTS: 1, REB: 1, AST: 1, STL: 0.4, BLK: 0.25 };
 export const ALPHA = 0.6;                    // imbalance penalty strength (geomean blend)
 
 // --- Win curve (engine Step 5) ---
