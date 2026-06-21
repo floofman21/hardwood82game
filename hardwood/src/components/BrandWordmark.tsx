@@ -23,27 +23,16 @@ export function BrandWordmark({ size = 54 }: { size?: number }) {
 }
 
 function Basketball({ size }: { size: number }) {
-  const s = size;
-  const c = s / 2;
-  const r = s * 0.46;
+  // Exact glyph from the design (viewBox 0 0 100 100): amber ball with a dark
+  // outline and seams.
   const seam = colors.bg;
   return (
-    <Svg width={s} height={s} viewBox={`0 0 ${s} ${s}`} style={styles.glyph}>
-      <Circle cx={c} cy={c} r={r} fill={colors.accent} />
-      <Line x1={c} y1={c - r} x2={c} y2={c + r} stroke={seam} strokeWidth={s * 0.05} />
-      <Line x1={c - r} y1={c} x2={c + r} y2={c} stroke={seam} strokeWidth={s * 0.05} />
-      <Path
-        d={`M ${c - r} ${c} Q ${c} ${c - r * 0.9} ${c + r} ${c}`}
-        stroke={seam}
-        strokeWidth={s * 0.045}
-        fill="none"
-      />
-      <Path
-        d={`M ${c - r} ${c} Q ${c} ${c + r * 0.9} ${c + r} ${c}`}
-        stroke={seam}
-        strokeWidth={s * 0.045}
-        fill="none"
-      />
+    <Svg width={size} height={size} viewBox="0 0 100 100" style={styles.glyph}>
+      <Circle cx={50} cy={50} r={45} fill={colors.accent} stroke={seam} strokeWidth={6} />
+      <Line x1={50} y1={7} x2={50} y2={93} stroke={seam} strokeWidth={6} />
+      <Line x1={7} y1={50} x2={93} y2={50} stroke={seam} strokeWidth={6} />
+      <Path d="M18 16 Q50 50 18 84" fill="none" stroke={seam} strokeWidth={6} />
+      <Path d="M82 16 Q50 50 82 84" fill="none" stroke={seam} strokeWidth={6} />
     </Svg>
   );
 }
