@@ -32,7 +32,7 @@ export default function Draft() {
 
   useEffect(() => { if (status === 'idle') router.replace('/'); }, [status]);
   useEffect(() => { if (status === 'spinning') s.spin(); }, [status]);
-  useEffect(() => { if (status === 'complete') router.replace('/results'); }, [status]);
+  useEffect(() => { if (status === 'complete') router.replace('/simulating'); }, [status]);
 
   // Each new spin result drives a reel animation + resets the carousel.
   useEffect(() => {
