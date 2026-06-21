@@ -44,7 +44,7 @@ export function CandidateCard({
 
       {hideStats ? (
         <View style={styles.hidden}>
-          <Text style={styles.hiddenTxt}>HOOPIQ</Text>
+          <Text style={styles.hiddenTxt}>SCOUT'S EYE</Text>
           <Text style={styles.hiddenSub}>stats hidden — draft on knowledge</Text>
         </View>
       ) : (

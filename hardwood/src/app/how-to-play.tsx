@@ -11,7 +11,7 @@ const RULES: Array<{ h: string; b: string }> = [
   { h: 'Five stats matter', b: 'Points, rebounds, assists, steals and blocks are all weighed — and adjusted for the era each player came from, so a 1960s line is comparable to a 2020s one.' },
   { h: 'Balance wins titles', b: 'A roster that dominates one category but ignores another gets capped. The weakest category is your ceiling. A balanced, complete team is what chases a perfect season.' },
   { h: 'Chase 82–0', b: 'A flawless 82–0 is rare by design. It takes a roster strong everywhere — including the categories most lineups forget, like steals.' },
-  { h: 'Classic vs HoopIQ', b: 'Classic shows stat lines as you draft. HoopIQ hides them — you draft on knowledge alone and the numbers are revealed at the end.' },
+  { h: "Classic vs Scout's Eye", b: "Classic shows stat lines as you draft. Scout's Eye hides them — you draft on knowledge alone and the numbers are revealed at the end." },
 ];
 
 export default function HowToPlay() {

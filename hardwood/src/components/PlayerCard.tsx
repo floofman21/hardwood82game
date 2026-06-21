@@ -52,7 +52,7 @@ export function PlayerCard({
       )}
       {hideStats && (
         <View style={styles.hidden}>
-          <Text style={styles.hiddenTxt}>HoopIQ</Text>
+          <Text style={styles.hiddenTxt}>Scout's Eye</Text>
           <Text style={styles.hiddenSub}>stats hidden</Text>
         </View>
       )}

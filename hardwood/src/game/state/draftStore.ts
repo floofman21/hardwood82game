@@ -13,7 +13,7 @@ import {
 import { spin as spinPairs, mulberry32 } from '../spin/slotMachine';
 import { simulate } from '../engine/index';
 
-export type GameMode = 'classic' | 'hoopiq';
+export type GameMode = 'classic' | 'scoutseye';
 export type DraftStatus = 'idle' | 'spinning' | 'picking' | 'assigning' | 'complete';
 
 interface DraftState {

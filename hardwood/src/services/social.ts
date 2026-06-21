@@ -7,7 +7,7 @@ import type { SimResult } from '../game/data/types';
 export interface GameSummary {
   id: string;
   playedAt: number;
-  mode: 'classic' | 'hoopiq';
+  mode: 'classic' | 'scoutseye';
   wins: number;
   losses: number;
   rosterIds: string[];

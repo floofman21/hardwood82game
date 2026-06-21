@@ -101,7 +101,7 @@ function ModeToggle({ mode, onChange }: { mode: GameMode; onChange: (m: GameMode
         />
       )}
       <Segment title="CLASSIC" sub="Stats shown" active={index === 0} onPress={() => onChange('classic')} />
-      <Segment title="HOOPIQ" sub="Stats hidden" active={index === 1} onPress={() => onChange('hoopiq')} />
+      <Segment title="SCOUT'S EYE" sub="Stats hidden" active={index === 1} onPress={() => onChange('scoutseye')} />
     </View>
   );
 }
