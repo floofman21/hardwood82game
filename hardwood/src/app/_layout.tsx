@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -35,11 +35,22 @@ export default function RootLayout() {
     BarlowCondensed_800ExtraBold,
   });
 
+  // Keep the animated splash up long enough to play one full dunk, otherwise it
+  // flashes by once fonts are cached. Tune SPLASH_MIN_MS (set to 0 to disable).
+  const SPLASH_MIN_MS: number = 2800;
+  const [minElapsed, setMinElapsed] = useState(SPLASH_MIN_MS === 0);
+  useEffect(() => {
+    if (SPLASH_MIN_MS === 0) return;
+    const id = setTimeout(() => setMinElapsed(true), SPLASH_MIN_MS);
+    return () => clearTimeout(id);
+  }, []);
+  const ready = fontsLoaded && minElapsed;
+
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.bg }}>
       <SafeAreaProvider>
         <StatusBar style="light" />
-        {fontsLoaded ? (
+        {ready ? (
           <Stack
             screenOptions={{
               headerShown: false,

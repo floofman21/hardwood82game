@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Switch, Pressable, Alert, StyleSheet } from 'react-native';
+import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useMetaStore } from '../game/state/metaStore';
 import { ScreenHeader } from '../components/ScreenHeader';
@@ -33,6 +34,13 @@ export default function Settings() {
             thumbColor={colors.text}
           />
         </View>
+
+        <Pressable onPress={() => router.push('/splash-preview')} style={styles.row}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.label}>Replay intro animation</Text>
+            <Text style={styles.sub}>Watch the HoopLore dunk</Text>
+          </View>
+        </Pressable>
 
         <Pressable onPress={confirmClear} style={styles.row}>
           <Text style={[styles.label, { color: colors.bad }]}>Clear history</Text>
